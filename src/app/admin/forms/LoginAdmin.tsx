@@ -3,7 +3,7 @@ import { adminAuth } from "@/auth"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import footballBanner from "@public/bannerFootball.png"
+import footballBanner from "@/public/bannerFootball.png"
 
 const LoginAdmin = () => {
     const [formState, setFormState] = useState<"incorrect" | "none">("none")

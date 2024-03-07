@@ -1,5 +1,5 @@
 import Image from "next/image"
-import logo from "@public/LogoBlanco.png"
+import logo from "@/public/LogoBlanco.png"
 import Navbar from "./navbar/Navbar"
 import Link from "next/link"
 

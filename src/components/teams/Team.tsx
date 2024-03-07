@@ -1,4 +1,4 @@
-import footballTeam from '@public/footballteam.jpeg'
+import footballTeam from '@/public/footballteam.jpeg'
 import Image from 'next/image'
 
 const Team = () => {

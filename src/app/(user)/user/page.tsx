@@ -1,8 +1,8 @@
-import footballUserBanner from "@public/footballUserBanner.png"
-import bgImage from '@public/primaryBG.png'
-import altaEquipo from '@public/altaEquipo.png'
-import altaPartido from '@public/altaPartido.png'
-import altaJugador from '@public/altaJugador.jpeg'
+import footballUserBanner from "@/public/footballUserBanner.png"
+import bgImage from '@/public/primaryBG.png'
+import altaEquipo from '@/public/altaEquipo.png'
+import altaPartido from '@/public/altaPartido.png'
+import altaJugador from '@/public/altaJugador.jpeg'
 import Image from "next/image"
 
 const page = () => {

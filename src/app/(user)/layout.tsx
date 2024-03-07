@@ -4,7 +4,7 @@ import "../globals.css";
 import React, { ReactNode } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/header/Header";
-import bgImage from '@public/primaryBG.png'
+import bgImage from '@/public/primaryBG.png'
 import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 

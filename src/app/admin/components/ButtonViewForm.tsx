@@ -6,10 +6,10 @@
 // import CreateMatch from '../forms/CreateMatch'
 // import CreateTeam from '../forms/CreateTeam'
 // import { StaticImport } from 'next/dist/shared/lib/get-img-props'
-// import addPlayer from '@public/addPlayer.svg'
-// import addDT from '@public/addDT.svg'
-// import addTeam from '@public/addTeam.svg'
-// import addMatch from '@public/addMatch.svg'
+// import addPlayer from '@/public/addPlayer.svg'
+// import addDT from '@/public/addDT.svg'
+// import addTeam from '@/public/addTeam.svg'
+// import addMatch from '@/public/addMatch.svg'
 
 // type FormToShow = "createTeam" | "createMatch" | "createUser" | "createDT"
 
