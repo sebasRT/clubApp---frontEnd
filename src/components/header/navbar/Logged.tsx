@@ -1,3 +1,4 @@
+'use client'
 import { logoutUser } from "@/lib/user.actions"
 import { cookies } from "next/headers"
 import { useRouter } from "next/navigation"
@@ -10,7 +11,7 @@ const router = useRouter()
   }
 
   return (
-        <button className="group bg-primary-500 font-squada rounded-3xl p-1 px-2 text-baltic-sea-900" onClick={closeUserSession}>
+        <button className="group bg-primary-500 font-squada rounded-[5px] p-1 px-2 text-baltic-sea-900" onClick={closeUserSession}>
           <p className=" group-active:scale-95">Cerrar Sesión</p>
         </button>
   )
