@@ -19,16 +19,16 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
   };
 
   return (
-    <div className="flex justify-center items-center shadow-2xl px-5">
-      <button className="text-gray-600 mr-4 text-5xl" onClick={goToPrevSlide}>
-        &#8249;
+    <div className="flex justify-between shadow-2xl md:px-5">
+      <button className="text-gray-600 md:mr-4 text-5xl" onClick={goToPrevSlide}>
+        {'<'}
       </button>
       <div className="overflow-hidden">
         <div className="flex flex-col transition-transform duration-500 ease-in-out transform lg:flex-row">
           {cards.map((card, index) => {
             if (index >= currentIndex * 2 && index < (currentIndex + 1) * 2) {
               return (
-                <div key={index} className=" max-w-lg p-4">
+                <div key={index} className=" md:w-[40rem] p-4">
                   {card}
                 </div>
               );
@@ -37,8 +37,8 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
           })}
         </div>
       </div>
-      <button className="text-gray-600 ml-4 text-5xl" onClick={goToNextSlide}>
-        &#8250;
+      <button className="text-gray-600 md:ml-4 text-5xl" onClick={goToNextSlide}>
+        {'>'}
       </button>
     </div>
   );
