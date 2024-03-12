@@ -34,7 +34,7 @@ const Admin = () => {
             <section className="flex gap-8">
               <button>Perfil</button>
               <button><GiReceiveMoney /></button>
-              <button className="group bg-primary-500 font-squada rounded-3xl p-1 px-2  text-baltic-sea-900" onClick={logout}>
+              <button className="group bg-primary-500 font-squada rounded-[5px] p-1 px-2  text-baltic-sea-900" onClick={logout}>
                 <p className="group-active:scale-95">Cerrar Sesión</p>
               </button>
             </section>

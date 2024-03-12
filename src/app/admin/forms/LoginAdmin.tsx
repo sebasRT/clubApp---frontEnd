@@ -19,19 +19,16 @@ const LoginAdmin = () => {
     }
 
   return (
-    <div className=" absolute grid h-screen top-0  text-center ">
-      <figure className="w-full h-fit">
-        <Image src={footballBanner} alt={""} />
+    <div className=" absolute grid top-0 text-center ">
+      <figure className="w-full h-fit hidden md:block">
+        <Image src={footballBanner} alt={"banner"} />
       </figure>
-      <form action={authorizeAdmin} className="w-fit mx-auto z-50" >
-        <h2 className="text-2xl text-baltic-sea-800 font-squada drop-shadow-md font-medium ">INGRESA LA CONTRASEÑA DE ADMINISTRADOR</h2>
-        <hr />
-      <input
-      className="font-semibold outline-none block mx-auto my-5 text-center p-2 rounded-md shadow-lg"
-      type="text" id="password" name="password"/>
-      <button type="submit" className="bg-baltic-sea-700 rounded-2xl px-4 py-1 font-semibold text-baltic-sea-50 text-xs shadow-md">INGRESAR</button>
-      {formState === "incorrect" && <span className="block text-sm text-red-500 font-medium my-2">contraseña incorrecta</span>}
-      </  form>
+      <form action={authorizeAdmin} className="w-fit mx-auto mt-32 md:mt-5 z-50" >
+        <h2 className="text-2xl text-baltic-sea-800 font-squada font-medium border-b-2">INGRESA LA CONTRASEÑA DE ADMINISTRADOR</h2>
+        <input className=" outline-none block mx-auto my-10  text-center py-2 px-10 rounded-[5px]" type="text" id="password" name="password"/>
+        <button type="submit" className="bg-baltic-sea-700 rounded-[5px] px-4 py-1 font-semibold text-baltic-sea-50">INGRESAR</button>
+        {formState === "incorrect" && <span className="block text-sm text-red-500 font-medium my-2">contraseña incorrecta</span>}
+      </form>
     </div>
   )
 }

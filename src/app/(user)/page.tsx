@@ -19,7 +19,7 @@ export default function Home() {
       <figure className="w-full  object-cover hidden md:block">
         <Image src={footballBanner} className="object-cover w-full" alt={"Football banner"} />
       </figure>
-      <div className="relative w-[100%] mt-24 md:my-5">
+      <div className="relative w-[100%] mt-24 md:my-2">
           <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900"> Bienvenido a ClubAPP</h1>
           <Carousel cards={cards} />
       </div>
