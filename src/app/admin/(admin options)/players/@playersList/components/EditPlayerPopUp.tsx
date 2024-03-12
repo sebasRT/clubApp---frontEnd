@@ -40,17 +40,17 @@ const EditPlayerPopUp = () => {
         <>
 
             {editOpen &&
-                <div style={{ left: location[0], top: location[1] }} className='fixed bg-baltic-sea-700 w-40 h-60  z-50 shadow-xl text-baltic-sea-50 border-2 border-baltic-sea-950 rounded-md ml:w-52 md:h-64'>
+                <div style={{ left: location[0], top: location[1] }} className='fixed bg-baltic-sea-700 w-40 h-60  z-50 text-baltic-sea-50 rounded-[5px] ml:w-52 md:h-64'>
                     <IoMdCloseCircle onClick={() => setEditOpen(false)} className='absolute right-0 m-1 text-2xl text-red-500 z-50' />
                     <form action={updatePlayer} className='relative p-2 flex flex-col justify-between h-full w-full '>
-                        <span className='font-semibold text-sm ml:text-base '>Editar usuario: </span>
+                        <span className='font-semibold ml:text-base '>Editar usuario: </span>
                         {Object.keys(playerToUpdate).map((fieldName, index) => (
 
-                            <div className='text-xs relative border-[2px] border-transparent rounded-md ml:text-sm sm:text-base'>
+                            <div className=' relative border-transparent rounded-[5px] sm:text-base'>
 
                                 <input
                                     id={fieldName}
-                                    className='peer pl-2 text-baltic-sea-50 rounded-sm outline-none bg-white/40 w-full focus:'
+                                    className='peer pl-2 text-baltic-sea-50 rounded-[5px] outline-none bg-white/40 w-full focus:'
                                     key={index}
                                     type="text"
                                     defaultValue={playerToUpdate[fieldName as keyof EditInputs]}
@@ -66,7 +66,7 @@ const EditPlayerPopUp = () => {
                             </div>
 
                         ))}
-                        <button type="submit" className="text-sm tracking-wide font-thin bg-primary-500 rounded-lg font-squada ">ACTUALIZAR</button>
+                        <button type="submit" className=" tracking-wide bg-primary-500 rounded-[5px] font-squada ">ACTUALIZAR</button>
                     </form>
                 </div>
             }

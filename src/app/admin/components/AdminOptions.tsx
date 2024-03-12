@@ -21,12 +21,12 @@ const AdminOptions = () => {
   return (
     <nav className="flex text-primary-50 items-center" >
       <div className="flex *:mx-4 font-squada">
-        <button className="rounded-2xl bg-primary-500 h-fit self-center px-4 py-1 text-sm text-baltic-sea-900 font-thin"
+        <button className="rounded-[5px] bg-primary-500 h-fit self-center px-4 py-1 text-baltic-sea-900"
         onClick={logout}>
           CERRAR SESIÓN
           </button>
         <button className="flex flex-col  items-center">
-          <Image src={saveMoney} alt="save" width={30} />
+          <Image src={saveMoney} alt="save" width={35} />
           <span>COBROS</span>
         </button>
       </div>
@@ -53,15 +53,15 @@ const AdminOption = ({ img, title, url }: { img: StaticImport, title: string, ur
 
   return (
     <Link href={url} replace tabIndex={1} className="group/links">
-      <section className='flex flex-col gap-1 justify-around bg-baltic-sea-900 p-2 rounded-md m-2 group-focus-within/links:bg-baltic-sea-950
+      <section className='flex flex-col gap-1 justify-around bg-baltic-sea-900 p-2 rounded-[5px] m-2 group-focus-within/links:bg-baltic-sea-950
       group-focus-within/links:border-2
        border-primary-500 text-primary-50 transition box-border outline-none' >
 
-        <figure className='w-full overflow-hidden flex items-center justify-center rounded-md max-w-16'>
+        <figure className='w-full overflow-hidden flex items-center justify-center rounded-[5px] max-w-16'>
           <Image src={img} className='object-cover object-center' alt={title} />
         </figure>
 
-        <p className="text-xs hidden md:block">{title}</p>
+        <p className=" hidden md:block">{title}</p>
 
       </section>
     </Link>

@@ -28,10 +28,10 @@ const AdminOptionsMobile = () => {
 
 const Option = ({ img, title, url }: { img: StaticImport, title: string, url: string }) => {
     return (
-        <Link href={url} replace tabIndex={1} className='flex max-w-12 bg-baltic-sea-900 p-2 rounded-md m-2 
+        <Link href={url} replace tabIndex={1} className='flex max-w-12 bg-baltic-sea-900 p-2 rounded-[5px] m-2 
     border-primary-500  focus:bg-baltic-sea-950 focus:border-2 box-border transition b outline-none'>
 
-            <figure className='w-full overflow-hidden flex items-center justify-center rounded-md max-w-16'>
+            <figure className='w-full overflow-hidden flex items-center justify-center rounded-[5px] max-w-16'>
                 <Image src={img} className='object-cover object-center' alt={title} />
             </figure>
 
