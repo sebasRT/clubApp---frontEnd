@@ -1,35 +1,37 @@
 'use server'
 
 import { cookies } from "next/headers"
+import { apiBaseURL } from "./lib/utils";
 
-const apiBaseURL = process.env.API_BASE_URL
 
-export async function authDNI(formData: FormData) {
-    const dni = formData.get("dni")?.toString()  ;
-    if (!dni) return false; 
+export async function authDNI(dni: string) {
+
     const validDNI = await validateDNI(dni)
     if (!validDNI) return false;
 
-    cookies().set("dni", dni, {maxAge: 60 , httpOnly: true})
+    cookies().set("dni", dni, { httpOnly: true })
     return true
 }
 
-const validateDNI =async (dni: string) => {
+const validateDNI = async (dni: string) => {
+    
     try {
-        const getUserByDNI = await fetch(`${apiBaseURL}/players/getByDni/${dni}`, {method: 'GET'})
-        return getUserByDNI.status === 200 ? true : false; 
-        
-    } catch (error) {
-        return false
+        const getUserByDNI = await fetch(`${apiBaseURL}/players/getByDni/${dni}`, { method: 'GET' })
+        const data = await getUserByDNI.json()
+        cookies().set("username", data.userName)
+        return getUserByDNI.ok
+
+    } catch (error: any) {
+        throw new Error(error.message)
     }
 }
 
-export async function authUser(formData:FormData) {
-    const dni = cookies().get("dni")?.value  ;
+export async function authUser(formData: FormData) {
+    const dni = cookies().get("dni")?.value;
     const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
 
-    const getUserByDNI = await fetch(`${apiBaseURL}/players/getByDni/${dni}`, {method: 'GET'})
+    const getUserByDNI = await fetch(`${apiBaseURL}/players/getByDni/${dni}`, { method: 'GET' })
 
     const user = await getUserByDNI.json()
 
@@ -38,9 +40,9 @@ export async function authUser(formData:FormData) {
     return user.userEmail === email && user.userPassword === password ? true : false;
 }
 
-export async function adminAuth (password?: string ){
+export async function adminAuth(password?: string) {
     const validPassword = password === process.env.ADMIN_PASSWORD ? true : false;
     if (!validPassword) return false
-    cookies().set("adminAuth", "true" )
+    cookies().set("adminAuth", "true")
     return true
 }

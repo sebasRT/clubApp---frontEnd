@@ -1,15 +1,23 @@
 'use server'
 import { kv } from "@vercel/kv";
+import { redirect } from "next/navigation";
 
-export async function tryingKv ( ){
 
-    await kv.set("user_1_session", "session_token_value");
+export async function setUserOTP (userDni: string, otp: string) {
 
-    const session = await kv.get("user_1_session");
-    console.log(await session);
-    
+    const keyUserOtp = `user_${userDni}_otp`;
+
+    return await kv.set(keyUserOtp, otp);
 }
 
-export async function setUserOTP () {
+export async function getUserOTP (userDni: string){
 
+    const keyUserOtp = `user_${userDni}_otp`;
+    const userOTP = await kv.get(keyUserOtp) as string;
+    console.log(userOTP);
+
+    if (!userOTP) {
+        redirect("/")
+    }
+    return userOTP
 }

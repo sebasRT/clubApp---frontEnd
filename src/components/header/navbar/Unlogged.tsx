@@ -2,8 +2,9 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
 import { Dispatch, SetStateAction, useState } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { authDNI } from "@/auth";
+import { hasPassword } from "@/lib/user.actions";
 
 const Unlogged = () => {
 
@@ -33,7 +34,7 @@ const schema: yup.ObjectSchema<Inputs> = yup.object({
 })
 
 const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
-  const router = useRouter()
+
   const [LoginState, setLoginState] = useState<"none" | "loading" | "notFound">("none")
 
   const closeModal = () => {
@@ -44,17 +45,24 @@ const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) 
 
   const validateData = async (form: FormData) => {
 
+    const dni = form.get("dni")?.toString()  ;
+    if (!dni) return; 
+
     const validForm = await trigger()
     if (!validForm) return;
 
     setLoginState("loading")
-    const done = await authDNI(form)
+    const done = await authDNI(dni)
     if (!done) {
       setLoginState("notFound")
       return;
     }
-    redirect("/login")
+    const firstTime = !await hasPassword(dni) 
+
+    firstTime ? redirect("/validate") : redirect("/login")
+  
   }
+  
 
   return (
 

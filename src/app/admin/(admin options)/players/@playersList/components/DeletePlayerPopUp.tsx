@@ -20,6 +20,7 @@ const DeletePlayerPopUp = () => {
         const validPassword = await adminAuth(adminPassword)
 
         if (!validPassword) {setValidPassword(false); return}
+        setValidPassword(true)
         setDeletingState("loading")
 
         const deletePlayer = await deletePlayerAction(playerId)

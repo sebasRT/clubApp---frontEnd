@@ -33,12 +33,14 @@ export default function RootLayout({
           <Image src={background} alt={"ClubApp background"} fill={true}/>
         </figure>
         <AdminHeader />
+        <>
         {
           !adminAuth ? <LoginAdmin />
             :
             <main className="relative h-full w-full">{children}</main>
         }
         <AdminOptionsMobile />
+          </>
       </body>
     </html>
   )

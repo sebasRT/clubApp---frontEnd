@@ -24,7 +24,7 @@ export default function Home() {
       <div className="relative">
         
         <div className={`mt-14`}>
-          <h1 className="text-center text-5xl font-bauhs drop-shadow-md text-baltic-sea-900"> Bienvenido a ClubAPP</h1>
+          <h1 className="text-center text-5xl font-bauhs drop-shadow-md text-baltic-sea-900">Bienvenido a ClubAPP</h1>
           <Carousel cards={cards} />
         </div>
       </div>
