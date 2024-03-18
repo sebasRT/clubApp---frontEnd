@@ -9,9 +9,9 @@ const page = async() => {
     <main className="h-screen grid place-items-center">
 
       <Image src={loginTeamImage} alt="login Team Image" fill={true} className="object-cover object-center fixed -z-10" />
-      <div className="bg-primary-500/80 p-4 text-center rounded-md grid gap-4">
+      <div className="bg-[#f8643bda] px-4 text-center rounded-[5px]  md:w-[27rem] h-[29rem] flex flex-col justify-around">
       <LoginUserForm/>
-        <Link href="/" className="text-xs underline">¿Olvidaste tu contraseña?</Link>
+        <Link href="/" className=" underline text-[#3A3949]">¿Olvidaste tu contraseña?</Link>
       </div>
     </main>
   )

@@ -68,8 +68,8 @@ const CategoryTable = ({ categoryName, players, coach }: {
   
   return (
 
-    <div className='flex flex-col justify-between gap-2 bg-baltic-sea-700 w-full h-72 text-center text-baltic-sea-50 rounded-md border-4 border-baltic-sea-900 overflow-hidden'>
-      <h2 className='font-bauhs text-xl text-primary-500 mx-auto px-6 rounded-b-md bg-baltic-sea-500 w-fit'>{categoryName}</h2>
+    <div className='flex flex-col justify-between gap-2 bg-baltic-sea-700 w-full h-72 text-center text-baltic-sea-50 rounded-[5px] border-4 border-baltic-sea-900 overflow-hidden'>
+      <h2 className='font-squada text-2xl text-primary-500 mx-auto px-6 rounded-b-[5px] bg-baltic-sea-500 w-fit'>{categoryName}</h2>
       <div className='h-full overflow-y-scroll'>
         <h3 className='bg-baltic-sea-800 font-semibold sticky top-0'>Jugadores</h3>
 

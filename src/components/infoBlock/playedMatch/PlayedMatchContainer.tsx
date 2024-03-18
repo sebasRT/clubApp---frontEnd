@@ -5,7 +5,7 @@ import PlayedMatch from "./PlayedMatch"
 const PlayedMatchContainer = () => {
   return (
     <>
-      <CardContainer title={"FECHA JUGADA"} info={<PlayedMatch/>}/>
+      <CardContainer title={"FECHA JUGADA"} info={<PlayedMatch/>} bg={true}/>
     </>
   )
 }

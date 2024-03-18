@@ -4,7 +4,7 @@ import NextMatch from "./NextMatch"
 const NextMatchContainer = () => {
   return (
     <>
-    <CardContainer title={"PROXIMO PARTIDO"} info={<NextMatch/>}/>
+    <CardContainer title={"PROXIMO PARTIDO"} info={<NextMatch/>} bg={true}/>
     </>
   )
 }
