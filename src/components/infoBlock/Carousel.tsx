@@ -28,7 +28,7 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
           {cards.map((card, index) => {
             if (index >= currentIndex * 2 && index < (currentIndex + 1) * 2) {
               return (
-                <div key={index} className=" md:w-[40rem] p-4">
+                <div key={index} className="w-[16rem] min-[425px]:w-[22rem] md:w-[40rem] p-4">
                   {card}
                 </div>
               );
