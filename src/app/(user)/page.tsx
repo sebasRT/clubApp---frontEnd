@@ -15,11 +15,11 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen w-screen flex flex-col gap-5 items-center relative">
-      <figure className="w-full  object-cover hidden md:block">
+    <main className="min-h-screen w-screen flex flex-col  items-center relative">
+      <figure className="w-full hidden md:block">
         <Image src={footballBanner} className="object-cover w-full" alt={"Football banner"} />
       </figure>
-      <div className="relative w-[100%] mt-24 md:my-2">
+      <div className="relative w-[100%] mt-32 md:my-1">
           <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900"> Bienvenido a ClubAPP</h1>
           <Carousel cards={cards} />
       </div>
