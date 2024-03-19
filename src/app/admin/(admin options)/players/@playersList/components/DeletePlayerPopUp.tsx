@@ -20,6 +20,7 @@ const DeletePlayerPopUp = () => {
         const validPassword = await adminAuth(adminPassword)
 
         if (!validPassword) {setValidPassword(false); return}
+        setValidPassword(true)
         setDeletingState("loading")
 
         const deletePlayer = await deletePlayerAction(playerId)
@@ -33,21 +34,21 @@ const DeletePlayerPopUp = () => {
         <>
             {
                 deleteOpen &&
-                <div style={{ left: location[0], top: location[1] }} className="fixed grid gap-3 place-items-center w-40 h-48 bg-red-500 text-white/95 z-50 text-center text-sm rounded-md border-2 border-red-900 shadow-md *:block ml:text-base ml:w-52">
+                <div style={{ left: location[0], top: location[1] }} className="fixed grid gap-3 place-items-center w-20 h-48  bg-[#48465E] text-white/95 z-50 text-center rounded-[5px] p-1 *:block ml:text-base ml:w-52">
                     <>
                         {(
                             () => {
                                 switch (deletingState) {
                                     case "security":
                                         return <form action={deletePlayer} className="*:my-5 p-2 relative">
-                                            <span className="text-sm font-semibold">Ingrese la contraseña de administrador </span>
+                                            <span className=" font-semibold">Ingrese la contraseña de administrador </span>
                                             <input className="hidden" name="playerId" value={playerInfo.playerId} />
                                             <div>
                                                 <input type="text" name="adminPassword" className="w-full text-center text-baltic-sea-900" />
-                                                <span className="block text-sm font-semibold text-baltic-sea-900">{!validPassword && "contraseña incorrecta"}</span>
+                                                <span className="block font-semibold text-baltic-sea-50">{!validPassword && "contraseña incorrecta"}</span>
                                             </div>
-                                            <div className=" font-squada *:px-2 *:m-[2px] *:rounded-md">
-                                                <button className="bg-baltic-sea-700 text-baltic-sea-50" type="button" onClick={() => setDeleteOpen(false)}>CANCELAR</button>
+                                            <div className=" font-squada *:px-2 *:m-[2px] *:rounded-[5px]">
+                                                <button className=" text-baltic-sea-50" type="button" onClick={() => setDeleteOpen(false)}>CANCELAR</button>
                                                 <button className="bg-red-400 text-baltic-sea-800" type="submit">PROCEDER</button>
                                             </div>
                                         </form>;
@@ -60,14 +61,14 @@ const DeletePlayerPopUp = () => {
                                     case "done":
                                         return <div className="flex flex-col gap-20">
                                             <span className="block my-4 font-semibold">Jugador eliminado exitosamente</span>
-                                            <button className="bg-baltic-sea-700 text-baltic-sea-50 px-2 py-1 font-bold rounded leading-loose"
+                                            <button className=" text-baltic-sea-50 px-2 py-1 font-bold rounded-[5px] leading-loose"
                                                 onClick={() => { setDeleteOpen(false), setDeletingState("none") }}
                                             >OK</button>
                                         </div>;
                                     case "failed":
                                         return <div className="flex flex-col gap-20">
-                                        <span className="block my-4 text-sm font-semibold">Su solicitud no pudo ser procesada, si el problema persiste contacte a su proveedor de software.</span>
-                                        <button className="bg-baltic-sea-700 text-baltic-sea-50 px-2 py-1 font-bold rounded leading-loose"
+                                        <span className="block my-4 font-semibold">Su solicitud no pudo ser procesada, si el problema persiste contacte a su proveedor de software.</span>
+                                        <button className=" text-baltic-sea-50 px-2 py-1 font-bold rounded-[5px] leading-loose"
                                             onClick={() => { setDeleteOpen(false), setDeletingState("none") }}
                                         >OK</button>
                                     </div>
@@ -75,9 +76,9 @@ const DeletePlayerPopUp = () => {
                                         return <>
                                             <span>Estas a punto de eliminar al jugador: </span>
                                             <span><b>{playerName}</b></span>
-                                            <span className="text-xs ml:text-md"><b>DNI:</b> {playerInfo.userDni}</span>
-                                            <div className=" font-squada *:px-2 *:m-[2px] *:rounded-md">
-                                                <button className="bg-baltic-sea-700 text-baltic-sea-50" onClick={() => setDeleteOpen(false)}>CANCELAR</button>
+                                            <span><b>DNI:</b> {playerInfo.userDni}</span>
+                                            <div className=" font-squada *:px-2 *:m-[2px] *:rounded-[5px]">
+                                                <button className=" text-baltic-sea-50" onClick={() => setDeleteOpen(false)}>CANCELAR</button>
                                                 <button className="bg-red-400 text-baltic-sea-800" onClick={()=> setDeletingState("security")}>PROCEDER</button>
                                             </div>
                                         </>

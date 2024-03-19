@@ -37,12 +37,11 @@ const LoginUserForm = () => {
   
     return (
       <>
-        <form action={validate} className="z-10 flex flex-col gap-3 text-center relative">
+        <h2 className="text-4xl font-bauhs text-baltic-sea-50">Iniciar Sesión</h2>
+        <form action={validate} className="z-10 flex flex-col gap-3 text-center relative text-baltic-sea-50">
           {formState === "notFound" && <Warning/>}
-          <h2 className="text-2xl font-bauhs drop-shadow-md">Iniciar sesión</h2>
-  
           <div className="bg-primary-400 p-2 rounded-md flex flex-col">
-            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center border-0 border-b-[1px] border-silver-900 focus-visible:outline-none" placeholder="Ingresa email *" />
+            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center border-0 border-b-[1px] border-silver-900 focus-visible:outline-non" placeholder="Ingresa email *" />
            {errors.email?.message && <span className="text-xs font-semibold">{errors.email.message}</span> } 
           </div>
           <div className="bg-primary-400 p-2 rounded-md flex flex-col">
@@ -50,16 +49,15 @@ const LoginUserForm = () => {
             {errors.password?.message && <span className="text-xs font-semibold">{errors.password.message}</span> } 
 
           </div>
-          <button type="submit" className="p-1 px-3 text-sm bg-baltic-sea-800 w-fit self-center rounded-2xl font-squada border-2 border-baltic-sea-900 drop-shadow-md active:scale-95">Iniciar sesión</button>
+          <button type="submit" className="p-1 px-3  bg-baltic-sea-800 text-[#FFFF] w-fit self-center rounded-[5px] font-squada border-2 border-baltic-sea-900 active:scale-95">Iniciar sesión</button>
         </form>
-        {/* <DevTool control={control} /> */}
       </>
     )
     }  
 
     const Warning = () => {
 return(
-  <div className="absolute -translate-y-32 bg-silver-50/80 text-primary-500 text-center drop-shadow-md rounded-md p-4">
+  <div className="absolute -translate-y-32 bg-silver-50/80 text-primary-500 text-center  rounded-[5px] p-4">
     <TiWarningOutline className="mx-auto"/>
     <span >Los datos no corresponden a los del registro.</span>
   </div>
