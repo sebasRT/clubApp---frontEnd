@@ -1,6 +1,6 @@
 import { getData } from "@/lib/user.actions";
-import footballUserBanner from "@public/footballUserBanner.png";
-import bgImage from '@public/primaryBG.png';
+import footballUserBanner from "@/public/footballUserBanner.png";
+import bgImage from '@/public/primaryBG.png';
 import Image from "next/image";
 
 export default async function page() {
