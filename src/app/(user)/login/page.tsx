@@ -1,4 +1,4 @@
-import loginTeamImage from "@public/LoginTeamImage.png"
+import loginTeamImage from "@public/loginTeamImage.png"
 import Image from "next/image"
 import Link from "next/link"
 import LoginUserForm from "./LoginUserForm"
