@@ -15,7 +15,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="h-full flex flex-col  items-center relative">
+    <main className="min-h-screen w-screen flex flex-col gap-5 items-center relative">
       <figure className="w-full  object-cover hidden md:block">
         <Image src={footballBanner} className="object-cover w-full" alt={"Football banner"} />
       </figure>
