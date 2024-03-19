@@ -24,6 +24,28 @@ export async function hasPassword (dni: string){
         
     }
 }
-export async function setUserPassword (password: string) {
+export async function setUserPasswordAction (password: string) {
+    const dni = cookies().get('dni')?.value || ""
 
+    const body = {
+        userDni: dni,
+        userPassword: password
+    }
+
+    try {
+        
+        const setPassword =await fetch(`${apiBaseURL}/players/update/password`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        console.log(await setPassword.json());
+        
+        return setPassword.ok
+
+    } catch (error:any) {
+        throw new Error (error.message)
+    }
 }

@@ -23,7 +23,7 @@ const OTP = ({ otp, dni }: { otp: string, dni: string }) => {
   return (
   
       <OTPInput
-      containerClassName="grid place-items-center m-4"
+      containerClassName="grid place-items-center p-4 my-4 bg-baltic-sea-600/50 rounded-sm text-baltic-sea-50"
       onComplete={validate}
       maxLength={6}
       render={({ slots }) => (

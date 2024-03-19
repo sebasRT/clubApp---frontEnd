@@ -37,11 +37,11 @@ const LoginUserForm = () => {
   
     return (
       <>
-        <h2 className="text-4xl font-bauhs text-[#363545]">Iniciar Sesión</h2>
-        <form action={validate} className="z-10 flex flex-col gap-3 text-center relative">
+        <h2 className="text-4xl font-bauhs text-baltic-sea-50">Iniciar Sesión</h2>
+        <form action={validate} className="z-10 flex flex-col gap-3 text-center relative text-baltic-sea-50">
           {formState === "notFound" && <Warning/>}
           <div className="bg-primary-400 p-2 rounded-md flex flex-col">
-            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center border-0 border-b-[1px] border-silver-900 focus-visible:outline-none" placeholder="Ingresa email *" />
+            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center border-0 border-b-[1px] border-silver-900 focus-visible:outline-non" placeholder="Ingresa email *" />
            {errors.email?.message && <span className="text-xs font-semibold">{errors.email.message}</span> } 
           </div>
           <div className="bg-primary-400 p-2 rounded-md flex flex-col">
@@ -51,7 +51,6 @@ const LoginUserForm = () => {
           </div>
           <button type="submit" className="p-1 px-3  bg-baltic-sea-800 text-[#FFFF] w-fit self-center rounded-[5px] font-squada border-2 border-baltic-sea-900 active:scale-95">Iniciar sesión</button>
         </form>
-        {/* <DevTool control={control} /> */}
       </>
     )
     }  

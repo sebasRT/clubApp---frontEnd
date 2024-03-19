@@ -7,7 +7,7 @@ const WelcomeUserEmail = ({ clientName = "sebas", otp = "12345"}: { clientName: 
             <Tailwind>
                 <Container className="font-sans">
 
-                <Heading as="h1" className="text-center font-sans">Bienvenido a nuestra familia {clientName}</Heading>
+                <Heading as="h1" className="text-center font-sans">Te damos la bienvenida {clientName}</Heading>
                 <Hr />
                 <Heading as="h4">Aquí te dejamos el paso a paso para ingresar a tu perfil: </Heading>
                 <ul className="space-y-5 *:py-2">

@@ -15,7 +15,7 @@ export async function sendUserWelcomeEmail(userDni: string, userEmail: string, u
         
         const email =  await resend.emails.send({
             from: 'ClubApp <admin@club-app.xyz>',
-            subject: `bienvenido ${userName}`,
+            subject: `Hola ${userName}`,
             to: [userEmail],
             react: WelcomeUserEmail({clientName: userName, otp: userOTP})
         })

@@ -35,7 +35,7 @@ const placeholders: Record<keyof Inputs, string> = {
 const CreateDT = () => {
     const [formState, setFormState] = useState<"userCreated" | "none">("none")
 
-    const { register, control, reset, trigger } = useForm<Inputs>({ resolver: yupResolver(schema) })
+    const { register, reset, trigger, formState:{errors} } = useForm<Inputs>({ resolver: yupResolver(schema) })
 
     const createDT = async (formData: FormData) => {
         const validInputs = await trigger()
@@ -59,17 +59,18 @@ const CreateDT = () => {
             <form className="flex flex-col gap-10" action={createDT}>
                 <div className="grid gap-4">
 
-                {Object.keys(schema.fields).map((fieldName, index) => (
-                    <div key={index} className="bg-transparent">
-                        <input {...register(fieldName as keyof Inputs)}
-                            className="bg-transparent text-center md:text-left placeholder:text-baltic-sea-900 border-b-[1px] border-baltic-sea-900 outline-none"
-                            placeholder={placeholders[fieldName as keyof Inputs]} />
-                    </div>
-                ))}
+                    {Object.keys(schema.fields).map((fieldName, index) => (
+                        <div key={index} className="bg-transparent flex flex-col">
+                            <input {...register(fieldName as keyof Inputs)}
+                                lang="es"
+                                className="bg-transparent text-center md:text-left placeholder:text-baltic-sea-900 border-b-[1px] border-baltic-sea-900 outline-none"
+                                placeholder={placeholders[fieldName as keyof Inputs]} />
+                            {errors[fieldName as keyof Inputs]?.message && <span className="text-xs text-red-600">{errors[fieldName as keyof Inputs]?.message}</span>}
+                        </div>
+                    ))}
                 </div>
-                <ButtonForm text={"Alta DT"}/>
+                <ButtonForm text={"Alta DT"} />
             </form>
-            {/* <DevTool control={control} /> */}
         </section>
     )
 }

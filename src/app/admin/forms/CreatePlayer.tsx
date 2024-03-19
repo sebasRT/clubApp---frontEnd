@@ -18,11 +18,15 @@ type Inputs = {
 const schema: yup.ObjectSchema<Inputs> = yup.object({
     name: yup.string().required("Ingresa el nombre del jugador"),
     lastName: yup.string().required("Ingresa el apellido del jugador"),
-    dni: yup.string().required("Ingresa el DNI del jugador"),
+    dni: yup
+    .string()
+    .matches(/^\d{8,11}$/, "El DNI debe tener entre 8 y 11 dígitos")
+    .required("Ingresa el DNI del jugador"),
     email: yup.string().email("Proporciona un Email valido").required("Ingresa el Email del jugador"),
     birthday: yup.string().required("Ingresa la fecha de nacimiento"),
     address: yup.string().required("Dirección de residencia del jugador"),
 })
+
 const placeholders: Record<keyof Inputs, string> = {
     name: "Nombre *",
     lastName: "Apellido *",
@@ -88,9 +92,21 @@ const CreatePlayer = () => {
 
                     {Object.keys(schema.fields).map((fieldName, index) => (
                         <div key={index} className="bg-transparent flex flex-col">
-                            <input {...register(fieldName as keyof Inputs)}
+                            <input {...register(fieldName as keyof Inputs, {onChange: ()=> trigger(fieldName as keyof Inputs)})}
+                                type={ (()=>{
+                                    switch (fieldName) {
+                                        case "dni":
+                                            return "number"
+                                        case "birthday":
+                                            return "date"
+                                        case "email":
+                                            return "email"
+                                        default:
+                                            return "text"
+                                    }
+                                })()
+                                    }
                                 lang="es"
-                                type={fieldName === "birthday" ? "date" : "text"}
                                 min="2011-01-01" max="2018-12-31"
                                 name={fieldName}
                                 className="bg-transparent text-center md:text-left placeholder:text-baltic-sea-900 border-b-[1px] border-baltic-sea-900 outline-none"
@@ -99,9 +115,8 @@ const CreatePlayer = () => {
                         </div>
                     ))}
                 </div>
-                <button type="submit" className="text-primary-50 p-1 px-3 text-sm bg-baltic-sea-800 w-fit self-center rounded-2xl font-squada border-2 border-baltic-sea-900 drop-shadow-md active:scale-95">Alta Socio</button>
+                <button type="submit" className="text-primary-50 p-1 px-3 text-sm bg-baltic-sea-800 w-fit self-center rounded-md font-squada border-2 border-baltic-sea-900 active:scale-95">Alta Socio</button>
             </form>
-            {/* <DevTool control={control} /> */}
         </section>
     )
 }

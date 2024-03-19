@@ -17,9 +17,12 @@ const validateDNI = async (dni: string) => {
     
     try {
         const getUserByDNI = await fetch(`${apiBaseURL}/players/getByDni/${dni}`, { method: 'GET' })
+        if(!getUserByDNI.ok ) return false;
+
         const data = await getUserByDNI.json()
         cookies().set("username", data.userName)
-        return getUserByDNI.ok
+        
+        return true
 
     } catch (error: any) {
         throw new Error(error.message)

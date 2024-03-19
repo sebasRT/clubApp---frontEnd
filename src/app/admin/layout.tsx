@@ -27,7 +27,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet" />
       </head>
 
-      <body className={`${inter.className} relative grid auto-rows-[auto_1fr_auto] bg-baltic-sea-300 max-w-screen min-h-screen overflow-x-hidden text-baltic-sea-950`}>
+      <body className={`${inter.className} font-squada relative grid auto-rows-[auto_1fr_auto] bg-baltic-sea-300 max-w-screen min-h-screen overflow-x-hidden text-baltic-sea-950`}>
 
         <figure className="fixed top-0 h-full w-full -z-10 overflow-hidden">
           <Image src={background} alt={"ClubApp background"} fill={true}/>

@@ -15,7 +15,7 @@ const page = async () => {
     const { userDni, userOTP, userName } = await getUserValidationParams()
     
     return (
-        <main className="flex flex-col items-center text-center text-baltic-sea-950">
+        <main className="flex flex-col items-center text-center text-baltic-sea-950 pt-24 h-screen *:my-6">
             <h1 className=" text-3xl font-semibold">Hola {userName}</h1>
             <h2 className="text-2xl font-medium">Ingresa el código que llego a tu correo en el momento de tu inscripción</h2>
             <OTP otp={userOTP} dni={userDni} />
