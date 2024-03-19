@@ -4,8 +4,6 @@ import { cookies } from "next/headers"
 import { apiBaseURL } from "./utils"
 
 
-const apiBaseURL = process.env.API_BASE_URL
-
 export async function logoutUser() {
     cookies().delete("userAuth")
 }
