@@ -12,10 +12,10 @@ const router = useRouter()
   }
 
   return (
-    <div className="flex gap-x-5">
+    <div className="flex gap-x-5 items-center">
       <Payment/>
-      <button className="group bg-primary-500 font-squada rounded-[5px] px-2 text-baltic-sea-900" onClick={closeUserSession}>
-        <p className=" group-active:scale-95">Cerrar Sesión</p>
+      <button className="group bg-primary-500 font-squada rounded-[5px] p-1 px-2  text-baltic-sea-900" onClick={closeUserSession}>
+        <p className="group-active:scale-95">Cerrar Sesión</p>
       </button>
     </div>
   )

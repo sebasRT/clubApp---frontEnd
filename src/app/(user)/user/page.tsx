@@ -13,7 +13,7 @@ export default async function page() {
         <Image src={footballUserBanner} className="object-cover" alt={"Football banner"} />
       </figure>
       <div className="mt-24 md:my-2">
-        <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900">Bienvenido <span className="text-[4rem]">{`${data.userName} ${data.userLastname}`}</span></h1>
+        <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900">Bienvenid@ <span className="text-6xl">{`${data.userName} ${data.userLastname}`}</span></h1>
       </div>
     </main>
   );
