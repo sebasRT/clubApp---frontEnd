@@ -42,7 +42,7 @@ const LoginUserForm = () => {
         <form action={validate} className="z-10 flex flex-col gap-3 text-center relative text-baltic-sea-50">
           {formState === "notFound" && <Warning/>}
           <div className="bg-primary-400 p-2 rounded-md flex flex-col">
-            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center border-0 border-b-[1px] border-silver-900 focus-visible:outline-non" placeholder="Ingresa email *" />
+            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center focus-visible:outline-non" placeholder="Ingresa email *" />
             {errors.email?.message && <span className="text-xs font-semibold text-red-800">{errors.email.message}</span> } 
           </div>
           <div className="bg-primary-400 p-2 rounded-md flex flex-col relative">
