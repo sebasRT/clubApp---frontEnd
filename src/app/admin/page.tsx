@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { Event } from "react-big-calendar";
 import dayjs from "dayjs";
 
