@@ -4,8 +4,8 @@ import { Coach, Player } from "@/models/admin.model"
 import dayjs from "dayjs"
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
+import { apiBaseURL } from "./utils"
 
-const apiBaseURL = process.env.API_BASE_URL
 
 export async function validateAdminAuth () {
     return cookies().has("adminAuth")
@@ -23,6 +23,7 @@ export async function createPlayerAction(formData: FormData) {
     const getValue = (value: string) => {
         return formData.get(value)?.toString() || ""
     }
+
     const category = dayjs(getValue("birthday")).year().toString()
     
     const body:Player = {
@@ -31,8 +32,8 @@ export async function createPlayerAction(formData: FormData) {
         userDni: getValue("dni"),
         userEmail:getValue("email") ,
         userAddress: getValue("address"),
-        userPassword: getValue("dni"),
         playerBirthdate: getValue("birthday"),
+        userPassword: "",
         categoryName: category
     }
 
@@ -42,15 +43,60 @@ export async function createPlayerAction(formData: FormData) {
             headers: {
             "Content-Type": "application/json",
           },
+
           body: JSON.stringify(body)
+
         })
         revalidatePath("/admin/players", "layout")
         revalidatePath("/admin/teams")
-        return data.json()
+        return data.ok
     } catch (error: any) {
-        throw new Error(error)
+        throw new Error(error.message)
     }
     
+}
+
+type EditInputs = {
+    playerId: string,
+    userName: string;
+    userLastname: string;
+    userEmail: string;
+    userAddress: string;
+};
+
+export async function editPlayerAction (formData: FormData) {
+
+    const getValue = (value: string) => {
+        return formData.get(value)?.toString() || ""
+    }
+
+    const body: EditInputs = {
+            playerId: getValue("playerId"),
+            userName: getValue("userName"),
+            userLastname: getValue("userLastname") ,
+            userEmail: getValue("userEmail") ,
+            userAddress: getValue("userAddress")
+    }
+    
+    try {
+        const data = await fetch(`${apiBaseURL}/players/update/form` , {  
+            method: "PUT",
+            headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body)
+
+        })
+
+        revalidatePath("/admin/players", "layout")
+        revalidatePath("/admin/teams")
+        
+        return data.ok
+
+    } catch (error: any) {
+        throw new Error(error.message)
+    }
+
 }
 
 export async function deletePlayerAction (id: string) {

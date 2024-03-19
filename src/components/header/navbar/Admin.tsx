@@ -27,7 +27,7 @@ const Admin = () => {
             <section>
               <ul>
                 <li className={pathname === "/admin" ? "bg-red-500": ""}>Partidos</li>
-                <li>Equipos</li>
+                <li>Categorías</li>
                 <li>Jugadores</li>
               </ul>
             </section>

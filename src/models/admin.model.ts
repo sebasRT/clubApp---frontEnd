@@ -4,7 +4,7 @@ export type Player = {
     userDni: string,
     userEmail: string,
     userAddress: string,
-    userPassword: string,
+    userPassword?: string,
     playerId?: number | string,
     playerBirthdate: string,
     categoryName: string,

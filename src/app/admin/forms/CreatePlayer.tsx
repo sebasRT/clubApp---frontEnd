@@ -1,5 +1,6 @@
 'use client'
 import { createPlayerAction } from "@/lib/admin.actions"
+import { sendUserWelcomeEmail } from "@/lib/resend/actions"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -31,22 +32,32 @@ const placeholders: Record<keyof Inputs, string> = {
     address: "Dirección *",
 };
 const CreatePlayer = () => {
-    const [formState, setFormState] = useState<"userCreated" | "none">("none")
+    const [formState, setFormState] = useState<"userCreated" | "failed" |  "none">("none")
 
-    const { register, formState: { errors }, trigger, reset } = useForm<Inputs>({ resolver: yupResolver(schema), reValidateMode: "onChange" })
+    const { register, formState: { errors }, trigger, reset, getValues } = useForm<Inputs>({ resolver: yupResolver(schema), reValidateMode: "onChange" })
+
+    const resetFormState = () => setTimeout(() => {
+        setFormState("none")
+    }, 6000);
 
     const createUser = async (formData: FormData) => {
+
         const validInputs = await trigger()
         if (!validInputs) return false;
         const created = await createPlayerAction(formData)
-        if (created) {
-            setFormState("userCreated");
-            reset();
-            setTimeout(() => {
-                setFormState("none")
-            }, 6000);
-            return true
-        }
+
+        if (!created) {setFormState("failed"); resetFormState(); return};
+
+        const dni = getValues("dni")
+        const email = getValues("email")
+        const name = getValues("name")
+        const sendEmail = await sendUserWelcomeEmail(dni,email, name )
+        if(sendEmail?.error) return ; 
+        
+        setFormState("userCreated");
+        reset();
+        resetFormState()
+        return 
         ;
     }
 
@@ -55,7 +66,23 @@ const CreatePlayer = () => {
 
 
             <h2 className="font-squada text-3xl sm:text-3xl md:text-4xl text-center px-4">Formulario alta <b>Jugador</b></h2>
-            {formState === "userCreated" && <span className="animate-bounce  top-0">Usuario creado exitosamente</span>}
+            { (()=>{
+                switch (formState) {
+
+                    case "failed":
+                        return <span className="animate-bounce  top-0">No se pudo crear el usuario</span>
+
+                    case "userCreated":
+                        return <span className="animate-bounce  top-0">Usuario creado exitosamente</span>
+
+                    default:
+                        return <></>
+                        break;
+                }
+            })()
+            
+            }
+
             <form className="flex flex-col gap-10" action={createUser}>
                 <div className="grid  gap-4">
 

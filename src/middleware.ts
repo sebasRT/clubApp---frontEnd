@@ -6,13 +6,17 @@ export async function middleware(request: NextRequest,  res: NextResponse) {
   const response = NextResponse.next()
   const hasDNI = request.cookies.has("dni")
   const userAuth = request.cookies.has("userAuth")
-  const hasAdminAuth = request.cookies.has("adminAuth")
-
+  const validOTP = request.cookies.has("validOTP")
+  
   if (!hasDNI && request.nextUrl.pathname === "/login") {
     return NextResponse.redirect(new URL("/", request.url))
   }
 
   if(!userAuth && request.nextUrl.pathname === "/user"){
+    return NextResponse.redirect(new URL("/", request.url))
+  }
+
+  if(!validOTP && request.nextUrl.pathname === "/changePassword"){
     return NextResponse.redirect(new URL("/", request.url))
   }
   
