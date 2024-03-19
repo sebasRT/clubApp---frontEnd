@@ -6,7 +6,8 @@ import {  useState } from "react"
 import { useForm } from "react-hook-form"
 import { TiWarningOutline } from "react-icons/ti";
 import * as yup from "yup"
-import { MdVisibility } from "react-icons/md";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+
 type Inputs = {
     email: string,
     password: string
@@ -46,7 +47,14 @@ const LoginUserForm = () => {
           </div>
           <div className="bg-primary-400 p-2 rounded-md flex flex-col relative">
               <input {...register("password")} id="password" className="bg-transparent placeholder:text-silver-900 placeholder:text-center  focus-visible:outline-none" type={showPass ? '' : 'password'} placeholder="Ingresa contraseña *" />
-              <MdVisibility className="cursor-pointer absolute top-[10px] right-2 text-[#000] z-10 text-[1.5rem]" onClick={() => setShowpass(!showPass)}/>
+              {
+                showPass ? (
+                  <MdVisibility className="cursor-pointer absolute top-[10px] right-2 text-[#000] z-10 text-[1.5rem]" onClick={() => setShowpass(!showPass)}/>
+                ):(
+                  <MdVisibilityOff className="cursor-pointer absolute top-[10px] right-2 text-[#000] z-10 text-[1.5rem]" onClick={() => setShowpass(!showPass)}/>
+                )
+              }
+              
             {errors.password?.message && <span className="text-xs font-semibold text-red-800">{errors.password.message}</span> } 
           </div>
           <button type="submit" className="p-1 px-3  bg-baltic-sea-800 text-[#FFFF] w-fit self-center rounded-[5px] font-squada border-2 border-baltic-sea-900 active:scale-95">Iniciar sesión</button>
