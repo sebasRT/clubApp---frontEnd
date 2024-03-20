@@ -62,7 +62,6 @@ const PlayersList = ({ players }: { players: Player[] }) => {
 
 
       <section className="relative flex flex-col justify-between w-full bg-baltic-sea-900 text-baltic-sea-900 max-h-96 py-3 rounded-md ml:px-3 md:h-96">
-      <button onClick={()=> setPlayersList(players)} className="absolute right-0 bottom-0 z-20 text-white text-3xl p-2 active:rotate-180 duration-200"><IoReload /></button>
         <div className="overflow-y-auto rounded-sm">
           <playerPopUpContext.Provider value={{
               location: popUpLocation,
@@ -97,9 +96,12 @@ const PlayersList = ({ players }: { players: Player[] }) => {
           </playerPopUpContext.Provider>
 
         </div>
-        <div className="flex m-3 mb-0">
-          <label htmlFor="playerFilter" className="text-baltic-sea-50 font-squada">BUSCAR JUGADOR: </label>
-          <input type="text" className="mx-3 pl-4 font-semibold rounded-sm outline-none" name="playerFilter" id="playerFilter" onChange={(e) => filterPlayers(e.target.value)} />
+        <div className="flex justify-between items-stretch max-w-full">
+          <div className="flex items-center m-3 mb-0 text-xs md:text-base">
+            <label htmlFor="coachFilter" className="text-baltic-sea-50 font-squada">BUSCAR JUGADOR: </label>
+            <input type="text" className="mx-3 pl-4 font-semibold rounded-sm  outline-none w-20 max-h-5 md:w-fit " name="coachFilter" id="coachFilter" onChange={(e) => filterPlayers(e.target.value)} />
+          </div>
+          <button onClick={() => setPlayersList(players)} className=" text-white text-3xl p-2 active:rotate-180 duration-200"><IoReload /></button>
         </div>
       </section>
     </>

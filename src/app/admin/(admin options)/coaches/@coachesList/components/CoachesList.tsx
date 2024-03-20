@@ -12,7 +12,7 @@ import { Coach } from "@/models/admin.model";
 type CoachPopUp = {
   coachInfo: Coach,
   location: number[],
-  setLocation:  Dispatch<SetStateAction<number[]>>,
+  setLocation: Dispatch<SetStateAction<number[]>>,
   setInfo: Dispatch<SetStateAction<Coach>>
   editOpen: boolean,
   setEditOpen: Dispatch<SetStateAction<boolean>>,
@@ -20,7 +20,7 @@ type CoachPopUp = {
   setDeleteOpen: Dispatch<SetStateAction<boolean>>,
 }
 
-export const coachPopUpContext = createContext<CoachPopUp>({ 
+export const coachPopUpContext = createContext<CoachPopUp>({
   coachInfo: {
     coachNumber: 0,
     userName: '',
@@ -34,18 +34,18 @@ export const coachPopUpContext = createContext<CoachPopUp>({
     categoryId: 0
   },
   location: [0, 0],
-  setLocation: () => {},
-  setInfo: () => {},
+  setLocation: () => { },
+  setInfo: () => { },
   editOpen: false,
-  setEditOpen: () => {},
+  setEditOpen: () => { },
   deleteOpen: false,
-  setDeleteOpen: () => {},
+  setDeleteOpen: () => { },
 })
 
 const CoachesList = ({ coaches }: { coaches: Coach[] }) => {
 
-  const [popUpInfo, setPopUpInfo] = useState<Coach>({coachNumber: 0, userName: '', userLastname: '', userDni: '', userEmail: '', userAddress: '', userPassword: '', categoryId: 0, roleId: 3, clubId: 1})
-  const [popUpLocation, setPopUpLocation] = useState([0,0])
+  const [popUpInfo, setPopUpInfo] = useState<Coach>({ coachNumber: 0, userName: '', userLastname: '', userDni: '', userEmail: '', userAddress: '', userPassword: '', categoryId: 0, roleId: 3, clubId: 1 })
+  const [popUpLocation, setPopUpLocation] = useState([0, 0])
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [editOpen, setEditOpen] = useState(false)
 
@@ -58,21 +58,20 @@ const CoachesList = ({ coaches }: { coaches: Coach[] }) => {
 
   return (
     <>
-      <section className="relative flex flex-col justify-between w-full bg-baltic-sea-900 text-baltic-sea-900 max-h-96 py-3 rounded-md ml:px-3 md:h-96">
-      <button onClick={()=> setCoachesList(coaches)} className="absolute right-0 bottom-0 z-20 text-white text-3xl p-2 active:rotate-180 duration-200"><IoReload /></button>
+      <section className="relative flex flex-col justify-between w-full bg-baltic-sea-900 text-baltic-sea-900 max-h-96 pt-3 rounded-md ml:px-3 md:h-96">
         <div className="overflow-y-auto rounded-sm">
           <coachPopUpContext.Provider value={{
-              location: popUpLocation,
-              coachInfo: popUpInfo,
-              setInfo: setPopUpInfo,
-              setLocation: setPopUpLocation,
-              editOpen,
-              setEditOpen,
-              deleteOpen,
-              setDeleteOpen,
-            }} >
-              <EditCoachPopUp/>
-              <DeleteCoachPopUp/>
+            location: popUpLocation,
+            coachInfo: popUpInfo,
+            setInfo: setPopUpInfo,
+            setLocation: setPopUpLocation,
+            editOpen,
+            setEditOpen,
+            deleteOpen,
+            setDeleteOpen,
+          }} >
+            <EditCoachPopUp />
+            <DeleteCoachPopUp />
             <table summary="Lista completa de jugadores de ClubApp" className="relative w-full text-xs overflow-y-scroll ml:text-sm sm:text-base md:text-lg">
 
               <caption className="text-3xl font-squada drop-shadow-sm mb-3 text-primary-500">LISTADO DE ENTRENADORES</caption>
@@ -94,18 +93,22 @@ const CoachesList = ({ coaches }: { coaches: Coach[] }) => {
           </coachPopUpContext.Provider>
 
         </div>
-        <div className="flex m-3 mb-0">
-          <label htmlFor="coachFilter" className="text-baltic-sea-50 font-squada">BUSCAR ENTRENADOR: </label>
-          <input type="text" className="mx-3 pl-4 font-semibold rounded-sm  outline-none" name="coachFilter" id="coachFilter" onChange={(e) => filterCoaches(e.target.value)} />
+        <div className="flex justify-between items-stretch max-w-full">
+          <div className="flex items-center m-3 mb-0 text-xs md:text-base">
+            <label htmlFor="coachFilter" className="text-baltic-sea-50 font-squada">BUSCAR ENTRENADOR: </label>
+            <input type="text" className="mx-3 pl-4 font-semibold rounded-sm  outline-none w-20 max-h-5 md:w-fit " name="coachFilter" id="coachFilter" onChange={(e) => filterCoaches(e.target.value)} />
+          </div>
+          <button onClick={() => setCoachesList(coaches)} className=" text-white text-3xl p-2 active:rotate-180 duration-200"><IoReload /></button>
         </div>
+
       </section>
     </>
   )
 }
 
-const CoachRow = ({ coach}: { coach: Coach }) => {
+const CoachRow = ({ coach }: { coach: Coach }) => {
 
-  const resize = (x:number, y:number) => {
+  const resize = (x: number, y: number) => {
     const clientX = Math.min(window.innerWidth - 208, x)
     const clientY = Math.min(window.innerHeight - 288, y)
 
@@ -116,7 +119,7 @@ const CoachRow = ({ coach}: { coach: Coach }) => {
 
   const coachName = userName + " " + userLastname
 
-  const {setInfo, setLocation, setEditOpen, setDeleteOpen} = useContext(coachPopUpContext)
+  const { setInfo, setLocation, setEditOpen, setDeleteOpen } = useContext(coachPopUpContext)
 
   return (
     <>
@@ -134,8 +137,8 @@ const CoachRow = ({ coach}: { coach: Coach }) => {
               <span className="flex flex-col sm:flex-row sm:gap-3"><b>Estado membresía</b></span>
             </div>
             <div className="flex *:text-lg *:mx-3 sm:*:text-2xl md:text-3xl lg:text-4xl">
-              <MdDelete className="text-primary-600" onClick={(e) =>{ setInfo(coach); setDeleteOpen(true);setEditOpen(false) ;setLocation(resize(e.clientX, e.clientY))}} />
-              <FaUserEdit onClick={(e) =>{ setInfo(coach); setEditOpen(true); setDeleteOpen(false);setLocation(resize(e.clientX, e.clientY))}}/>
+              <MdDelete className="text-primary-600" onClick={(e) => { setInfo(coach); setDeleteOpen(true); setEditOpen(false); setLocation(resize(e.clientX, e.clientY)) }} />
+              <FaUserEdit onClick={(e) => { setInfo(coach); setEditOpen(true); setDeleteOpen(false); setLocation(resize(e.clientX, e.clientY)) }} />
             </div>
           </section>
         </th>
