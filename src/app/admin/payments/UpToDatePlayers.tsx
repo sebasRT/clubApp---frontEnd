@@ -20,6 +20,16 @@ const playersList = [
     playerFeePaid: true,
     playerPasswordChanged: true
   },
+  {
+    userName: "Pablo",
+    userLastname: "Alvarez",
+    userDni: "45576972",
+    userEmail: "pipualvarez1@gmail.com",
+    userAddress: "lebensonh 4865",
+    userPassword: "password3",
+    playerFeePaid: true,
+    playerPasswordChanged: true
+  }
 ];
 
 const UpToDatePlayers = () => {
