@@ -1,15 +1,16 @@
-import NextMatchContainer from "@/components/infoBlock/nextMatch/NextMatchContainer";
+
 import { getData } from "@/lib/user.actions";
 import footballUserBanner from "@/public/footballUserBanner.png";
 import bgImage from '@/public/primaryBG.png';
 import Image from "next/image";
 import Stadistic from "../components/stadisticsPlayer/Stadistic";
+import NextMatchUserContainer from "../components/nextUserMatches/NextMatchUserContainer";
 
 export default async function page() {
   const data = await getData()
   
   const cards = [
-    <NextMatchContainer key="1" />,
+    <NextMatchUserContainer key="1" />,
     <Stadistic key="2" />,
   ];
 
