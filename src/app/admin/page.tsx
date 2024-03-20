@@ -67,7 +67,7 @@ const players = [
           <section className='flex gap-5'>
             <div className='bg-white/80 rounded-md border-2 text-center px-5'>
               <p className='text-lg font-semibold'>Jugadores</p>
-              <p className='text-3xl font-bold'>13</p>
+              <p className='text-3xl font-bold'>14</p>
               <p className='text-xs text-silver-300 font-light '>Cantidad total</p>
             </div>
             <div className='bg-white/80 rounded-md border-2 text-center px-5'>
