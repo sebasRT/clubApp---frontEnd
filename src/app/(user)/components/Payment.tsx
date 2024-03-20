@@ -3,7 +3,7 @@
 import { MercadoPagoConfig, Preference } from 'mercadopago';
 import Image from 'next/image';
 import { redirect } from "next/navigation";
-import saveMoney from '@public/saveMoney.svg'
+import saveMoney from '@/public/saveMoney.svg'
 import { pay } from '../payment/pay';
 import { useState } from 'react';
 

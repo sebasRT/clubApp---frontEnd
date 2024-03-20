@@ -1,8 +1,8 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props"
-import addPlayer from '@public/addPlayer.svg'
-import addDT from '@public/addDT.svg'
-import addTeam from '@public/addTeam.svg'
-import addMatch from '@public/addMatch.svg'
+import addPlayer from '@/public/addPlayer.svg'
+import addDT from '@/public/addDT.svg'
+import addTeam from '@/public/addTeam.svg'
+import addMatch from '@/public/addMatch.svg'
 import Link from "next/link"
 import Image from "next/image"
 import { cookies } from "next/headers"

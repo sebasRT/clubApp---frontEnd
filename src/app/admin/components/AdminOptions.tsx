@@ -1,13 +1,13 @@
 'use client'
 import { StaticImport } from "next/dist/shared/lib/get-img-props"
 import Image from "next/image"
-import addPlayer from '@public/addPlayer.svg'
-import addDT from '@public/addDT.svg'
-import addTeam from '@public/addTeam.svg'
-import addMatch from '@public/addMatch.svg'
+import addPlayer from '@/public/addPlayer.svg'
+import addDT from '@/public/addDT.svg'
+import addTeam from '@/public/addTeam.svg'
+import addMatch from '@/public/addMatch.svg'
 import { IoIosArrowDropleft } from "react-icons/io"
 import Link from "next/link"
-import saveMoney from '@public/saveMoney.svg'
+import saveMoney from '@/public/saveMoney.svg'
 import { logoutAdmin } from "@/lib/admin.actions"
 import { useRouter } from "next/navigation"
 

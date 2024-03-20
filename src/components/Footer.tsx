@@ -1,6 +1,6 @@
-import tiktok from '@public/tiktok.png'
-import instagram from '@public/instagram.png'
-import facebook from '@public/facebook.png'
+import tiktok from '@/public/tiktok.png'
+import instagram from '@/public/instagram.png'
+import facebook from '@/public/facebook.png'
 import Image from 'next/image'
 
 const Footer = () => {
