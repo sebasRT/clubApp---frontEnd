@@ -1,4 +1,3 @@
-import tiktok from '@/public/tiktok.png'
 import instagram from '@/public/instagram.png'
 import facebook from '@/public/facebook.png'
 import Image from 'next/image'
@@ -14,7 +13,6 @@ const Footer = () => {
         </section>
       </div>
       <div className={`flex gap-5`}>
-        <Image src={tiktok} width="30" height="30" alt='tiktok'/>
         <Image src={instagram} width="30" height="30" alt='instagram'/>
         <Image src={facebook} width="30" height="30" alt='facebook'/>
       </div>

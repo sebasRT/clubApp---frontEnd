@@ -5,13 +5,15 @@ import footballBanner from "@/public/bannerFootball.png"
 import Carousel from "@/components/infoBlock/Carousel";
 import NextMatchContainer from "@/components/infoBlock/nextMatch/NextMatchContainer";
 import PlayedMatchContainer from "@/components/infoBlock/playedMatch/PlayedMatchContainer";
+import AboutUsContainer from "@/components/infoBlock/aboutUs/AboutUsContainer";
 export default function Home() {
 
   const cards = [
-    <FixtureContainer key="1" />,
-    <TeamContainer key="2" />,
-    <NextMatchContainer key="3" />,
-    <PlayedMatchContainer key="4" />,
+    <PlayedMatchContainer key="1" />,
+    // <FixtureContainer key="2" />,
+    <AboutUsContainer key="3"/>,
+    // <TeamContainer key="4" />,
+    // <NextMatchContainer key="5" />,
   ];
 
   return (
@@ -20,8 +22,8 @@ export default function Home() {
         <Image src={footballBanner} className="object-cover w-full" alt={"Football banner"} />
       </figure>
       <div className="relative w-[100%] mt-32 md:my-1">
-          <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900"> Bienvenido a ClubAPP</h1>
-          <Carousel cards={cards} />
+        <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900"> Bienvenido a ClubAPP</h1>
+        <Carousel cards={cards} />
       </div>
     </main>
   );
