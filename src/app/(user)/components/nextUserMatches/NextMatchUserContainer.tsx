@@ -1,11 +1,11 @@
 import CardContainer from "@/components/infoBlock/CardContainer"
 import NextUserMatch from "./NextUserMatch"
 
-const FixtureContainer = () => {
+const NextMatchUserContainer = () => {
   return (
     <>
-    <CardContainer title={"PROXIMAS FECHAS"} info={<NextUserMatch/>} bg={true}/>
+    <CardContainer title={"PROXIMAS FECHAS"} info={<NextUserMatch/>} bg={false}/>
     </>
   )
 }
-export default FixtureContainer
+export default NextMatchUserContainer

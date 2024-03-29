@@ -5,7 +5,7 @@ import Team from "./Team"
 const TeamContainer = () => {
   return (
     <>
-    <CardContainer title={"EQUIPOS"} info={<Team/>} bg={false}/>
+      <CardContainer title={"EQUIPOS"} info={<Team/>} bg={false}/>
     </>
   )
 }
