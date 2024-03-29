@@ -4,7 +4,7 @@ import AboutUs from "./AboutUs"
 const AboutUsContainer = () => {
   return (
     <>
-    <CardContainer title={"SOBRE NOSOTROS"} info={<AboutUs/>} bg={true}/>
+    <CardContainer title={"SOBRE NOSOTROS"} info={<AboutUs/>} bg={false}/>
     </>
   )
 }
