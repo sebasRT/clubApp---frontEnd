@@ -43,13 +43,13 @@ const PasswordInputs = () => {
         <>
             <div className='flex flex-col'>
                 <input type="password" placeholder='ingresa contraseña*' {...register("password",{onChange: ()=> trigger("password")})} 
-                className='pl-3 mx-4 text-baltic-sea-800 outline-none border-2 border-transparent rounded-sm focus-visible:border-primary-500' />
+                className='pl-3 mx-4 bg-transparent outline-none border-2 rounded-sm p-1' />
                 {errors.password && <span className='text-[12px] text-baltic-sea-800 font-medium'>
                     {errors.password.message}</span>}
             </div>
             <div className='flex flex-col'>
                 <input type="password" placeholder='repite contraseña*'  {...register("confirmation")}
-                className='pl-3 mx-4 text-baltic-sea-800 outline-none border-2 border-transparent rounded-sm focus-visible:border-primary-500' />
+                className='pl-3 mx-4 bg-transparent outline-none border-2 rounded-sm p-1' />
                 {errors.confirmation && <span className='text-[12px] text-baltic-sea-800 font-medium'>
                     {errors.confirmation.message}</span>}
 
@@ -59,7 +59,7 @@ const PasswordInputs = () => {
                 formState === "loading" ?  
                 <CgSpinner className="animate-spin text-5xl mx-auto" /> 
                 :
-                <button onClick={validateInputs} className='bg-baltic-sea-50 px-4 w-fit font-squada tracking-widest rounded-sm text-baltic-sea-800 active:scale-95'>GUARDAR</button>
+                <button onClick={validateInputs} className=' w-fit font-squada tracking-widest border py-[0.6rem] px-[1.5rem] rounded-sm  active:scale-95'>GUARDAR</button>
             }
 
         </>
