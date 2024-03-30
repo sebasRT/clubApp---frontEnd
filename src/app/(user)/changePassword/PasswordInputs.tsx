@@ -42,16 +42,14 @@ const PasswordInputs = () => {
 
         <>
             <div className='flex flex-col'>
-                <span>Ingresa aquí tu contraseña</span>
-                <input type="password" {...register("password",{onChange: ()=> trigger("password")})} 
+                <input type="password" placeholder='ingresa contraseña*' {...register("password",{onChange: ()=> trigger("password")})} 
                 className='pl-3 mx-4 text-baltic-sea-800 outline-none border-2 border-transparent rounded-sm focus-visible:border-primary-500' />
                 {errors.password && <span className='text-[12px] text-baltic-sea-800 font-medium'>
                     {errors.password.message}</span>}
             </div>
             <div className='flex flex-col'>
-                <span>Confirma tu contraseña</span>
-                <input type="password"  {...register("confirmation")}
-                className='pl-3 mx-4 text-baltic-sea-800 outline-none border-2 border-transparent rounded-sm  focus-visible:border-primary-500'/>
+                <input type="password" placeholder='repite contraseña*'  {...register("confirmation")}
+                className='pl-3 mx-4 text-baltic-sea-800 outline-none border-2 border-transparent rounded-sm focus-visible:border-primary-500' />
                 {errors.confirmation && <span className='text-[12px] text-baltic-sea-800 font-medium'>
                     {errors.confirmation.message}</span>}
 

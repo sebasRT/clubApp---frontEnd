@@ -23,7 +23,7 @@ const OTP = ({ otp, dni }: { otp: string, dni: string }) => {
   return (
   
       <OTPInput
-      containerClassName="grid place-items-center p-4 my-4 bg-baltic-sea-600/50 rounded-sm text-baltic-sea-50"
+      containerClassName="grid place-items-center p-4 my-4 rounded-sm text-baltic-sea-50"
       onComplete={validate}
       maxLength={6}
       render={({ slots }) => (
@@ -44,7 +44,7 @@ const Slot = (props: SlotProps) => {
       'relative w-10 h-14 text-[2rem]',
       'flex items-center justify-center',
       'transition-all duration-300',
-      'border-border border-y border-r first:border-l first:rounded-l-md last:rounded-r-md',
+      'border-border border-y border-r first:border-l border-slate-600 first:rounded-l-md last:rounded-r-md',
       'group-hover:border-accent-foreground/20 group-focus-within:border-accent-foreground/20',
       'outline outline-0 outline-accent-foreground/20',
       { 'outline-4 outline-accent-foreground': props.isActive },
