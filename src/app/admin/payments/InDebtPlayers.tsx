@@ -1,37 +1,11 @@
-const playersList = [
-  {
-    userName: "Bob",
-    userLastname: "Johnson",
-    userDni: "456123789",
-    userEmail: "player3@example.com",
-    userAddress: "789 Oak St",
-    userPassword: "password3",
-    playerFeePaid: false,
-    playerPasswordChanged: true
-},
-{
-    userName: "Emily",
-    userLastname: "Williams",
-    userDni: "789456123",
-    userEmail: "player4@example.com",
-    userAddress: "101 Pine St",
-    userPassword: "password4",
-    playerFeePaid: false,
-    playerPasswordChanged: false
-},
-{
-    userName: "Michael",
-    userLastname: "Brown",
-    userDni: "321654987",
-    userEmail: "player5@example.com",
-    userAddress: "202 Maple St",
-    userPassword: "password5",
-    playerFeePaid: false,
-    playerPasswordChanged: false
+type Player = {
+  userName: string,
+  userLastname: string,
+  userDni: string,
+  playerFeePaid: boolean
 }
-];
 
-const InDebtPlayers = () => {
+const InDebtPlayers = ({players}:{players: Player[] }) => {
 
   return (
     <section className='flex flex-col border-2 bg-red-100/30'>
@@ -45,7 +19,7 @@ const InDebtPlayers = () => {
             </tr>
           </thead>
           <tbody>
-            {playersList.map((player, index) => (
+            {players.map((player, index) => (
               <tr key={index} className="odd:bg-black/10 even:bg-white/10">
                 <td className="pl-3">{player.userName} {player.userLastname}</td>
                 <td className="text-center">{player.userDni}</td>
@@ -54,7 +28,7 @@ const InDebtPlayers = () => {
           </tbody>
         </table>
       </div>
-      <span className="text-xl">Total de jugadores: <b>{playersList.length}</b></span>
+      <span className="text-xl">Total de jugadores: <b>{players.length}</b></span>
     </section>
   );
 }

@@ -7,7 +7,7 @@ export type Player = {
     userPassword?: string,
     playerId?: number | string,
     playerBirthdate: string,
-    categoryName: string,
+    category: {categoryName: string},
   }  
 
 export type Coach = {
@@ -29,4 +29,21 @@ export type Category = {
   coach: {userName: string, userLastname: string},
   players: Player[]
 }
-  
+
+export type Game = {
+  gameId: string,
+  gameDay: string,
+  gameTime: string,
+  gameIslocal: string,
+  gameTeamrival: string,
+  gameLocalgoals: number,
+  gameRivalgoals: number,
+  location: string,
+  category: Category
+}
+
+export type Fixture = {
+  fixtureId: number,
+  fixtureName: string,
+  fixtureGames: Game[]
+}

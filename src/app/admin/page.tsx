@@ -1,101 +1,89 @@
-'use client'
 import { apiBaseURL } from '@/lib/utils';
-import { BarList, DonutChart, Legend } from '@tremor/react';
+import PlayersMetrics from './metrics/PlayersMetrics';
+import PlayersByCategoryMetrics from './metrics/PlayersByCategoryMetrics';
+import { unstable_noStore } from 'next/cache';
+import PdfPlayers from './metrics/PdfPlayers';
 
-
-type PlayersMetrics ={
+type PlayersMetricsType = {
   totalCount: number,
   upToDateCount: number,
   inDebtCount: number,
   playersByCategory: { [key: string]: number }[]
 }
 
-// Realizamos la solicitud fetch para obtener el JSON desde una URL
-// const getMetrics = async() => {
-// try {
-//   const metricsRequest = await fetch(`${apiBaseURL}/players/metrics`, {method: 'GET'})
-//   if(!metricsRequest.ok) return;
+const getPlayersMetrics = async () => {
+  try {
+    const metricsRequest = await fetch(`${apiBaseURL}/players/metrics`, { method: 'GET' })
+    if (!metricsRequest.ok) return;
 
-//   const metrics = await metricsRequest.json() as PlayersMetrics
-//   return metrics
+    const metrics = await metricsRequest.json() as PlayersMetricsType
+    return metrics
 
-// } catch (error:any) {
-//   throw new Error(error.message)
-// }
-// }
+  } catch (error: any) {
+    throw new Error(error.message)
+  }
+}
 
-const page =async () => {
+const getCoachMetrics = async () => {
 
-// const metrics = await getMetrics() || {
-//   totalCount: 0,
-//   upToDateCount: 0,
-//   inDebtCount: 0,
-//   playersByCategory: [{ "none": 0 }]
-// }
-const categories = [
-  { name: '2011', value: 1 },
-  { name: '2012', value: 3 },
-  { name: '2013', value: 2 },
-  { name: '2014', value: 2 },
-  { name: '2015', value: 1 },
-  { name: '2016', value: 3 },
-  { name: '2017', value: 1 },
-  { name: '2018', value: 1 },
-]
+  try {
+    const metricsRequest = await fetch(`${apiBaseURL}/coaches/metrics`, { method: 'GET' })
+    if (!metricsRequest.ok) return;
 
-const players = [
-  { name: 'En deuda', value: 3 },
-  { name: 'Al dia', value: 8 }
-]
+    const metrics = await metricsRequest.json() as Number
+    return metrics
 
-// const categories: { name: string, value: number }[] = [];
-//     metrics.playersByCategory.forEach(obj => {
-//       const year = Object.keys(obj)[0];
-//       const count = obj[year];
-//       categories.push({ name: year, value: count });
-//     });
+  } catch (error: any) {
+    throw new Error(error.message)
+  }
+}
 
-//     // Ordenamos las categorías por nombre de año
-//     categories.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+const page = async () => {
+  unstable_noStore()
+  const coachesMetrics = await getCoachMetrics() || 0
+
+  const metrics = await getPlayersMetrics() || {
+    totalCount: 0,
+    upToDateCount: 0,
+    inDebtCount: 0,
+    playersByCategory: [{ "none": 0 }]
+  }
+
+  const players = [
+    { name: 'En deuda', value: metrics.inDebtCount },
+    { name: 'Al dia', value: metrics.upToDateCount }
+  ]
+
+  const categories: { name: string, value: number }[] = [];
+  metrics.playersByCategory.forEach(obj => {
+    const year = Object.keys(obj)[0];
+    const count = obj[year];
+    categories.push({ name: year, value: count });
+  });
+
+  categories.sort((a, b) => parseInt(a.name) - parseInt(b.name));
 
 
   return (
+    <div className='grid place-items-center gap-5 md:grid-cols-2 md:m-10 md:mx-20 md:p-5 bg-baltic-sea-700'>
+      <div className='flex flex-col gap-5'>
+        <div className='flex justify-around text-center'>
 
-    <>
-      <div className="grid md:grid-cols-2 gap-5 place-items-center my-3">
-        <article className='flex flex-col items-center gap-4 justify-center'>
-          <section className='flex gap-5'>
-            <div className='bg-white/80 rounded-md border-2 text-center px-5'>
-              <p className='text-lg font-semibold'>Jugadores</p>
-              <p className='text-3xl font-bold'>14</p>
-              <p className='text-xs text-silver-300 font-light '>Cantidad total</p>
-            </div>
-            <div className='bg-white/80 rounded-md border-2 text-center px-5'>
-              <p className='text-lg font-semibold'>Entrenadores</p>
-              <p className='text-3xl font-bold'>5</p>
-              <p className='text-xs text-silver-300 font-light '>Cantidad total</p>
-            </div>
-          </section>
-          <div className='bg-white/80 rounded-md border-2 p-1'>
-            <DonutChart
-              className='h-48 w-full'
-              data={players}
-              variant="pie"
-              colors={["red", "green"]}
-            />
-            <Legend categories={["Jugadores al Dia", "Jugadores en deuda"]} colors={["green", "red"]} />
-          </ div>
-        </article>
-        <section className='bg-white/80 rounded-md border-2 p-4'>
-          <p>Cantidad de jugadores por categoría</p>
-          <BarList data={categories} className='max-w-xs' />
-        </section>
-        <section>
-          <div></div>
-        </section>
+          <div className='flex flex-col px-3 py-1 rounded bg-white/80 border-2 items-center'>
+            <span className=''>Jugadores Activos</span>
+            <span className='text-3xl font-semibold'>{`${metrics.totalCount}`}</span>
+            <span className='text-xs text-gray-400'>Cantidad total</span>
+          </div>
+          <div className='flex flex-col px-3 py-1 rounded bg-white/80 border-2'>
+            <span>Entrenadores Activos</span>
+            <span className='text-3xl font-semibold'>{`${coachesMetrics}`}</span>
+            <span className='text-xs text-gray-400'>Cantidad total</span>
+          </div>
+        </div>
+        <PlayersMetrics players={players} pdf={<PdfPlayers/>} />
       </div>
-
-    </>
+      <PlayersByCategoryMetrics categories={categories} />
+    </div>
   )
 };
 export default page

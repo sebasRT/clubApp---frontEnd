@@ -40,7 +40,7 @@ const AdminOptions = () => {
           <AdminOption img={addPlayer} title={"Jugadores"} url="/admin/players" />
           <AdminOption img={addDT} title={"DTs"} url="/admin/coaches" />
           <AdminOption img={addTeam} title={"Equipos"} url="/admin/teams" />
-          <AdminOption img={addMatch} title={"Partidos"} url="/admin/matches" />
+          <AdminOption img={addMatch} title={"Fixtures"} url="/admin/fixtures" />
         </nav>
       </div>
 

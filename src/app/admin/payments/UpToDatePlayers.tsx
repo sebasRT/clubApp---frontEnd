@@ -1,38 +1,12 @@
 
-const playersList = [
-  {
-    userName: "John",
-    userLastname: "Doe",
-    userDni: "123456789",
-    userEmail: "player1@example.com",
-    userAddress: "123 Main St",
-    userPassword: "password1",
-    playerFeePaid: true,
-    playerPasswordChanged: false
-  },
-  {
-    userName: "Alice",
-    userLastname: "Smith",
-    userDni: "987654321",
-    userEmail: "player2@example.com",
-    userAddress: "456 Elm St",
-    userPassword: "password2",
-    playerFeePaid: true,
-    playerPasswordChanged: true
-  },
-  {
-    userName: "Pablo",
-    userLastname: "Alvarez",
-    userDni: "45576972",
-    userEmail: "pipualvarez1@gmail.com",
-    userAddress: "lebensonh 4865",
-    userPassword: "password3",
-    playerFeePaid: true,
-    playerPasswordChanged: true
-  }
-];
+type Player = {
+  userName: string,
+  userLastname: string,
+  userDni: string,
+  playerFeePaid: boolean
+}
 
-const UpToDatePlayers = () => {
+const UpToDatePlayers = ({players}:{players: Player[] }) => {
 
   return (
     <section className='flex flex-col border-2 bg-green-100/30'>
@@ -46,7 +20,7 @@ const UpToDatePlayers = () => {
           </tr>
         </thead>
         <tbody >
-          {playersList.map((player, index) => (
+          {players.map((player, index) => (
             <tr key={index} className="odd:bg-black/10  even:bg-white/10">
               <td className="pl-3">{player.userName} {player.userLastname}</td>
               <td className="text-center">{player.userDni}</td>
@@ -55,7 +29,7 @@ const UpToDatePlayers = () => {
         </tbody>
       </table>
       </div>
-        <span className="text-xl">Total de jugadores: <b>{playersList.length}</b></span>
+        <span className="text-xl">Total de jugadores: <b>{players.length}</b></span>
     </section>
   );
 }
