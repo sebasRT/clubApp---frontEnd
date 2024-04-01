@@ -11,5 +11,12 @@ export async function POST(request: NextRequest) {
   
   console.log('payment:', payment);
 
+  const status ={
+    status: payment.api_response.status
+  }
+
+  console.log(status.status);
+  
+
   return Response.json({success: true});
 }

@@ -4,7 +4,7 @@ const CardContainer = ({title, info, bg}: any) => {
       <section>
         <h2 className={`text-center text-xl font-squada text-primary-500`}>{title}</h2>
       </section>
-      <section className={`${bg ? 'bg-primary-500' : 'bg-[#BCBBCE]'} rounded-[5px] h-40 overflow-y-scroll`}>
+      <section className={`bg-[#BCBBCE] rounded-[5px] h-40 overflow-y-scroll`}>
         {info}
       </section>
     </div>

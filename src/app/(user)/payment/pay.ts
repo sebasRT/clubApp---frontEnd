@@ -12,7 +12,7 @@ export async function pay(){
           id:'cuota',
           title: 'Cuota',
           quantity: 1,
-          unit_price: 30000
+          unit_price: 10000
         }
       ],
     }
