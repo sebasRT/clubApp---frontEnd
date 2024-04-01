@@ -18,7 +18,7 @@ const AdminOptionsMobile = () => {
                     <Option img={addPlayer} title={"Jugadores"} url="/admin/players" />
                     <Option img={addDT} title={"DTs"} url="/admin/coaches" />
                     <Option img={addTeam} title={"Equipos"} url="/admin/teams" />
-                    <Option img={addMatch} title={"Partidos"} url="/admin/matches" />
+                    <Option img={addMatch} title={"Fixtures"} url="/admin/fixtures" />
                 </div>
 
             }

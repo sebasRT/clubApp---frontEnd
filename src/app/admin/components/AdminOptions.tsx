@@ -25,10 +25,10 @@ const AdminOptions = () => {
         onClick={logout}>
           CERRAR SESIÓN
           </button>
-        <button className="flex flex-col  items-center">
+        <Link href={"/admin/payments"} className="flex flex-col  items-center">
           <Image src={saveMoney} alt="save" width={35} />
           <span>COBROS</span>
-        </button>
+        </Link>
       </div>
       <div className="hidden relative group h-fit text-center font-squada sm:block" >
         <div className="flex flex-col items-center mx-4 cursor-pointer">
@@ -40,7 +40,7 @@ const AdminOptions = () => {
           <AdminOption img={addPlayer} title={"Jugadores"} url="/admin/players" />
           <AdminOption img={addDT} title={"DTs"} url="/admin/coaches" />
           <AdminOption img={addTeam} title={"Equipos"} url="/admin/teams" />
-          <AdminOption img={addMatch} title={"Partidos"} url="/admin/matches" />
+          <AdminOption img={addMatch} title={"Fixtures"} url="/admin/fixtures" />
         </nav>
       </div>
 

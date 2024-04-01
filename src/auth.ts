@@ -2,6 +2,8 @@
 
 import { cookies } from "next/headers"
 import { apiBaseURL } from "./lib/utils";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 
 export async function authDNI(dni: string) {
@@ -48,4 +50,27 @@ export async function adminAuth(password?: string) {
     if (!validPassword) return false
     cookies().set("adminAuth", "true")
     return true
+}
+
+export async function validateCoach (formData: FormData) {
+    const dni = formData.get("dni")?.toString() || ""
+    const password = formData.get("password")?.toString() || ""    
+    const validCoach = await fetch(`${apiBaseURL}/coaches/getByDni/${dni}`)
+    if (!validCoach.ok) return false; 
+    const data = await validCoach.json() as {userPassword: string}
+    if (data.userPassword !== password) return false; 
+
+    await authCoach(dni)
+    return true;
+}
+
+export async function authCoach (dni: string) {
+    cookies().set("dni", dni)
+    cookies().set("coachAuth", "true");
+    revalidatePath("/coach")
+}
+
+export async function logoutCoach () {
+    cookies().delete("coachAuth")
+    cookies().delete("dni")
 }

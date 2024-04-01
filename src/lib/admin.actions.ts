@@ -34,7 +34,9 @@ export async function createPlayerAction(formData: FormData) {
         userAddress: getValue("address"),
         playerBirthdate: getValue("birthday"),
         userPassword: "",
-        categoryName: category
+        category: {
+            categoryName: category
+        } 
     }
 
     try {
@@ -47,7 +49,7 @@ export async function createPlayerAction(formData: FormData) {
           body: JSON.stringify(body)
 
         })
-        revalidatePath("/admin/players", "layout")
+        revalidatePath("/admin/players")
         revalidatePath("/admin/teams")
         return data.ok
     } catch (error: any) {
@@ -87,9 +89,8 @@ export async function editPlayerAction (formData: FormData) {
           body: JSON.stringify(body)
 
         })
-
-        revalidatePath("/admin/players", "layout")
-        revalidatePath("/admin/teams")
+        revalidatePath("/admin")
+        revalidatePath("/admin", "layout")
         
         return data.ok
 
@@ -145,14 +146,31 @@ export async function createCoachAction (formData: FormData){
 
 }
 
+export async function editCoachAction (formData: FormData) {
+return false
+}
+
 export async function deleteCoachAction (id: string) {
     try {
-        const request = await fetch(`${apiBaseURL}/coaches/${id}`, {method: 'DELETE'})
+        const request = await fetch(`${apiBaseURL}/coaches/delete/${id}`, {method: 'DELETE'})
         if (!request.ok) return false; 
         revalidatePath("/admin/players", "layout")
         return request.ok
 
     } catch (error: any) {
         throw new Error(error)
+    }
+}
+
+// ----------------------------------- MATCHES CRUD-------------------------------- 
+
+export async function deleteMatchAction(id:string) {
+    try {
+        const request = await fetch(`${apiBaseURL}/games/delete/${id}`, {method: "DELETE"} )
+        revalidatePath("/admin/fixtures")
+        return request.ok
+
+    } catch (error: any) {
+        throw new Error(error.message)
     }
 }

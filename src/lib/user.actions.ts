@@ -50,7 +50,6 @@ export async function setUserPasswordAction (password: string) {
             },
             body: JSON.stringify(body)
         })
-        console.log(await setPassword.json());
         
         return setPassword.ok
 

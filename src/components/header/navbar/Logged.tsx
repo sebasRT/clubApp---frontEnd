@@ -1,7 +1,5 @@
-'use client'
 import Payment from "@/app/(user)/components/Payment"
 import { logoutUser } from "@/lib/user.actions"
-import { cookies } from "next/headers"
 import { useRouter } from "next/navigation"
 
 const Logged = async () => {

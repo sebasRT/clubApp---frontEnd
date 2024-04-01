@@ -18,31 +18,10 @@ const getCategories = async () => {
   }
 }
 
-
-
 const teamsPage = async () => {
   unstable_noStore()
   const data = await getCategories()
   const categories = await data.json() as Category[]
-
-  // const categories = [
-  //   {
-
-  //     categoryName: "2004",
-  //     coach: "sebasrt",
-  //     players: ["sebastianPlayer", "sebastianPlayer2"]
-  //   },
-  //   {
-  //     categoryName: "2005",
-  //     coach: "sebasrt2005",
-  //     players: ["5sebastianPlayer", "5sebastianPlayer2"]
-  //   },
-  //   {
-  //     categoryName: "2006",
-  //     coach: "sebasrt2006",
-  //     players: ["6sebastianPlayer", "6sebastianPlayer2", "6sebastianPlayer", "6sebastianPlayer2", "6sebastianPlayer", "6sebastianPlayer2", "6sebastianPlayer", "6sebastianPlayer2", "6sebastianPlayer", "6sebastianPlayer2"]
-  //   },
-  // ]
 
 
   return (
@@ -51,7 +30,6 @@ const teamsPage = async () => {
 
         {categories.map((category, index) => (
           <CategoryTable key={index} categoryName={category.categoryName} players={category.players} coach={category.coach} />
-
         ))}
       </div>
     </div>

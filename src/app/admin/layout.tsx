@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 import AdminHeader from "./components/AdminHeader";
 import AdminOptionsMobile from "./components/AdminOptionsMobile";
 import { cookies } from "next/headers";
-import LoginAdmin from "./forms/LoginAdmin";
+import LoginAdmin from "./components/forms/LoginAdmin";
 import background from "@/public/primaryBG.png"
 import Image from "next/image";
 import { Metadata } from "next";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
