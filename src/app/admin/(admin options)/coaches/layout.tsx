@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 
-export function playersLayout({ children }: { children: ReactNode }) {
+export function Layout({ children }: { children: ReactNode }) {
 
     return (
         <div className="size-full">
@@ -10,4 +10,4 @@ export function playersLayout({ children }: { children: ReactNode }) {
     )
 }
 
-export default playersLayout
+export default Layout
