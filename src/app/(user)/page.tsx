@@ -1,19 +1,13 @@
-import FixtureContainer from "@/components/infoBlock/fixture/FixtureContainer";
-import TeamContainer from "@/components/infoBlock/teams/TeamContainer";
 import Image from "next/image";
 import footballBanner from "@/public/bannerFootball.png"
 import Carousel from "@/components/infoBlock/Carousel";
-import NextMatchContainer from "@/components/infoBlock/nextMatch/NextMatchContainer";
 import PlayedMatchContainer from "@/components/infoBlock/playedMatch/PlayedMatchContainer";
 import AboutUsContainer from "@/components/infoBlock/aboutUs/AboutUsContainer";
 export default function Home() {
 
   const cards = [
     <PlayedMatchContainer key="1" />,
-    // <FixtureContainer key="2" />,
     <AboutUsContainer key="3"/>,
-    // <TeamContainer key="4" />,
-    // <NextMatchContainer key="5" />,
   ];
 
   return (
