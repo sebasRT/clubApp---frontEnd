@@ -27,7 +27,7 @@ const Editing = ({ data, setInfoState }: { data: Game, setInfoState: Dispatch<Se
             <form action="" className="col-span-2 flex flex-col items-center gap-3">
                 <div className="flex flex-col items-center">
                     <label htmlFor="category" className="text-xs md:text-sm">Categoría</label>
-                    <select name="category" id="category" defaultValue={data.category??.categoryName} className="py-0 bg-white/20 mb-2 appearance-none">
+                    <select name="category" id="category" defaultValue={data.category?.categoryName} className="py-0 bg-white/20 mb-2 appearance-none">
                         {categories.map((category) => <option value={category.categoryId}
                             className="appearance-none text-baltic-sea-800"
                         >{category.categoryName}</option>)}
