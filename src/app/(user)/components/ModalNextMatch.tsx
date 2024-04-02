@@ -2,8 +2,10 @@
 import { useState } from "react";
 
 const ModalNextMatch = ({data, match}: any) => {
-  const [closeModal, setCloseModal] = useState<boolean>(true);
+  const [closeModal, setCloseModal] = useState<boolean>(false);
   const toggleNavbar = () => {
+
+    
     setCloseModal(true);
   };
   

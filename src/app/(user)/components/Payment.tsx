@@ -22,8 +22,8 @@ export default function Payment() {
   // };
   
   return (
-    <form action={isPay ? "" : pay}>
-    <button className="flex flex-col  items-center " type={isPay ? 'button' : 'submit'} onClick={() => setIsPay(!isPay)}>
+    <form action={ pay}>
+    <button className="flex flex-col  items-center " type={'submit'}>
       <Image src={saveMoney} alt="save" width={25} />
       <span className="text-[#FFFF] font-squada">Cuota</span>
     </button>
