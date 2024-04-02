@@ -27,19 +27,23 @@ export type Category = {
   categoryId: number,
   categoryName: string,
   coach: {userName: string, userLastname: string},
-  players: Player[]
+  players: Player[],
+  categorySchedule?: string,
+  categoryDaytraining?: string
 }
 
 export type Game = {
-  gameId: string,
+  gameId?: string,
   gameDay: string,
   gameTime: string,
-  gameIslocal: string,
+  gameIslocal: boolean,
   gameTeamrival: string,
   gameLocalgoals: number,
   gameRivalgoals: number,
   location: string,
-  category: Category
+  category?: Category,
+  categoryId: string,
+  fixtureId: string,
 }
 
 export type Fixture = {

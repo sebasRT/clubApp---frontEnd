@@ -4,6 +4,7 @@ import { cookies } from "next/headers"
 import { apiBaseURL } from "./lib/utils";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { Coach } from "./models/admin.model";
 
 
 export async function authDNI(dni: string) {
@@ -55,22 +56,29 @@ export async function adminAuth(password?: string) {
 export async function validateCoach (formData: FormData) {
     const dni = formData.get("dni")?.toString() || ""
     const password = formData.get("password")?.toString() || ""    
-    const validCoach = await fetch(`${apiBaseURL}/coaches/getByDni/${dni}`)
+    const validCoach = await fetch(`${apiBaseURL}/coaches/getByDniCat/${dni}`)
     if (!validCoach.ok) return false; 
-    const data = await validCoach.json() as {userPassword: string}
-    if (data.userPassword !== password) return false; 
+    const data = await validCoach.json() as {category: string, coach: Coach}
+    if (data.coach.userPassword !== password) return false; 
+    await authCoach(data)
 
-    await authCoach(dni)
     return true;
 }
 
-export async function authCoach (dni: string) {
-    cookies().set("dni", dni)
-    cookies().set("coachAuth", "true");
+export async function authCoach (data: {category: string, coach: Coach}) {
+
+    cookies().set("coachAuth", "true", {maxAge: 500});
+    cookies().set("category", data.category);
+    cookies().set("dni", data.coach.userDni)
     revalidatePath("/coach")
+    redirect(`/coach`)
+
 }
 
 export async function logoutCoach () {
+
     cookies().delete("coachAuth")
+    cookies().delete("category")
     cookies().delete("dni")
+
 }

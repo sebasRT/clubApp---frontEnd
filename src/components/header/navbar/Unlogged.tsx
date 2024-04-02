@@ -78,7 +78,7 @@ const Login = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) 
         {LoginState === "loading" ? <span>Cargando...</span> : <button className="bg-silver-950  font-squada  w-fit py-1 px-4 m-auto rounded-[5px] hover:scale-105 transition text-primary-500" type="submit" >Ingresa</button>}
       </form>
       {LoginState === "notFound" && <p className="text-sm text-[#FF0505]">El DNI ingresado no corresponde a un usuario registrado</p>}
-      <Link className="text-xs underline text-baltic-sea-300" href="/coach">Soy entrenador</Link>
+      <Link className="text-xs underline text-baltic-sea-300" href="/coach/login">Soy entrenador</Link>
     </div>
   </div>
   )

@@ -1,6 +1,6 @@
 'use server'
 
-import { Coach, Player } from "@/models/admin.model"
+import { Coach, Game, Player } from "@/models/admin.model"
 import dayjs from "dayjs"
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
@@ -139,7 +139,7 @@ export async function createCoachAction (formData: FormData){
           body: JSON.stringify(body)
         })
         revalidatePath("/admin/coaches", "layout")
-        return data.json()
+        return await data.json()
     } catch (error: any) {
         throw new Error(error)
     }
@@ -172,5 +172,73 @@ export async function deleteMatchAction(id:string) {
 
     } catch (error: any) {
         throw new Error(error.message)
+    }
+}
+
+export async function createMatchAction (formData: FormData) {
+    const getValue = (value: string) => {
+        return formData.get(value)?.toString() || ""
+    }
+    const category = cookies().get('category')?.value as string
+    const body : Game = {
+        gameDay: getValue("date"),
+        gameTime: getValue("time"),
+        gameTeamrival: getValue("rival"),
+        location: getValue("location"),
+        categoryId: category,
+        fixtureId: getValue("fixture"),
+        gameLocalgoals: 0,
+        gameRivalgoals: 0,
+        gameIslocal: false
+    }
+
+    try {
+        const data = await fetch(`${apiBaseURL}/games/save` , {  
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json", 
+          },
+          body: JSON.stringify(body)
+        })
+        revalidatePath("/admin/coaches", "layout")
+        return data.ok
+    } catch (error: any) {
+        throw new Error(error)
+    }
+
+}
+
+export async function updateMatchAction (formData: FormData) {
+    const getValue = (value: string) => {
+        return formData.get(value)?.toString() || ""
+    }
+    const category = cookies().get('category')?.value as string
+    const body : Game = {
+        gameId: getValue("id"),
+        gameDay: getValue("date"),
+        gameTime: getValue("time"),
+        gameTeamrival: getValue("rival"),
+        location: getValue("location"),
+        categoryId: category,
+        fixtureId: getValue("fixture"),
+        gameLocalgoals: 0,
+        gameRivalgoals: 0,
+        gameIslocal: false
+    }
+
+    try {
+        const data = await fetch(`${apiBaseURL}/games/update` , {  
+            method: "PUT",
+            headers: {
+            "Content-Type": "application/json", 
+          },
+          body: JSON.stringify(body)
+        })
+        console.log(await data.json());
+        
+        revalidatePath("/admin/coaches", "layout")
+        return data.ok
+    } catch (error: any) {
+        throw new Error(error)
     }
 }
