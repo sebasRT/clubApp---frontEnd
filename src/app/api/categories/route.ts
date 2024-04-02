@@ -1,5 +1,5 @@
 import { apiBaseURL } from "@/lib/utils";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET () {
     const res = await fetch(`${apiBaseURL}/categories/listIdName`) 
