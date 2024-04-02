@@ -33,7 +33,7 @@ const playersPage = async () => {
   ]
 
   return (
-    <>
+    <div className="size-full">
             <h1 className="font-bauhs text-4xl text-center mb-4">GESTIÓN DE JUGADORES</h1>
             <div className="grid md:grid-cols-5 gap-10 md:gap-0 md:px-10">
                 <div className="w-full min-w-72 h-full col-span-3 ">
@@ -44,7 +44,7 @@ const playersPage = async () => {
                 <CreatePlayer />
                 </div>
             </div>
-        </>
+        </div>
   )
 }
 
