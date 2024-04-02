@@ -44,7 +44,7 @@ const page = async () => {
 
 
   return (
-    <>
+    <div className="size-full">
       <h1 className="font-bauhs text-4xl text-center mb-4">GESTIÓN DE ENTRENADORES</h1>
       <div className="grid md:grid-cols-5 gap-10 md:gap-0">
         <div className="w-full min-w-72 h-full col-span-3 ">
@@ -54,7 +54,7 @@ const page = async () => {
           <CreateDT />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
