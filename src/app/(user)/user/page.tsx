@@ -1,15 +1,16 @@
 
-import { getData } from "@/lib/user.actions";
+import { getMatchByCategory, getPlayerInfo } from "@/lib/user.actions";
 import footballUserBanner from "@/public/footballUserBanner.webp";
 import bgImage from '@/public/primaryBG.png';
 import Image from "next/image";
 import Stadistic from "../components/stadisticsPlayer/Stadistic";
-import NextUserMatch from "../components/nextUserMatches/NextUserMatch";
 import NextMatchUserContainer from "../components/nextUserMatches/NextMatchUserContainer";
 import NextPracticeContainer from "../components/nextPractice/NextPracticeContainer";
+import ModalNextMatch from "../components/ModalNextMatch";
 
 export default async function page() {
-  const data = await getData()
+  const data = await getPlayerInfo()
+  const match = await getMatchByCategory();
   
   const cards = [
     <NextMatchUserContainer key="1" />,
@@ -24,6 +25,7 @@ export default async function page() {
         <Image src={footballUserBanner} className="object-cover w-full" alt={"Football banner"} />
       </figure>
       <div className="mt-24 md:my-3">
+      <ModalNextMatch data={data} match={match}/>
         <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900">Bienvenid@ <span>{`${data.userName} ${data.userLastname}`}</span></h1>
       </div>
       <div className="flex justify-between shadow-2xl md:px-5">

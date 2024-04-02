@@ -44,7 +44,7 @@ const Slot = (props: SlotProps) => {
       'relative w-10 h-14 text-[2rem]',
       'flex items-center justify-center',
       'transition-all duration-300',
-      'border-border border-y border-r first:border-l border-slate-600 first:rounded-l-md last:rounded-r-md',
+      'border-border border-y border-r first:border-l border-slate-600 text-slate-600 first:rounded-l-md last:rounded-r-md',
       'group-hover:border-accent-foreground/20 group-focus-within:border-accent-foreground/20',
       'outline outline-0 outline-accent-foreground/20',
       { 'outline-4 outline-accent-foreground': props.isActive },
