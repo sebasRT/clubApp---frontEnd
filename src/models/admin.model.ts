@@ -33,7 +33,7 @@ export type Category = {
 }
 
 export type Game = {
-  gameId?: string,
+  gameId: string,
   gameDay: string,
   gameTime: string,
   gameIslocal: boolean,

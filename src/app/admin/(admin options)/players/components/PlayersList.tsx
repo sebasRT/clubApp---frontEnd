@@ -7,7 +7,6 @@ import EditPlayerPopUp from "./EditPlayerPopUp";
 import DeletePlayerPopUp from "./DeletePlayerPopUp";
 import { IoReload } from "react-icons/io5";
 import { Player } from "@/models/admin.model";
-import { unstable_noStore } from "next/cache";
 
 type PlayerPopUp = {
   playerInfo: Player
@@ -30,7 +29,7 @@ export const playerPopUpContext = createContext<PlayerPopUp>({
     userPassword: '',
     playerId: 0,
     playerBirthdate: '',
-    categoryName: ''
+    category: {categoryName: ""}
   },
   location: [0, 0],
   setLocation: () => {},
@@ -44,7 +43,7 @@ export const playerPopUpContext = createContext<PlayerPopUp>({
 
 const PlayersList = ({ players }: { players: Player[] }) => {
 
-  const [popUpInfo, setPopUpInfo] = useState<Player>({playerId: 0, playerBirthdate: "", userAddress: "", userName: "",  userDni: "", userEmail: "" , userPassword: "", userLastname: "", categoryName:""})
+  const [popUpInfo, setPopUpInfo] = useState<Player>({playerId: 0, playerBirthdate: "", userAddress: "", userName: "",  userDni: "", userEmail: "" , userPassword: "", userLastname: "", category:{categoryName: ""}})
   const [popUpLocation, setPopUpLocation] = useState([0,0])
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [editOpen, setEditOpen] = useState(false)

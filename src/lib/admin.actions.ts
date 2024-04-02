@@ -180,7 +180,7 @@ export async function createMatchAction (formData: FormData) {
         return formData.get(value)?.toString() || ""
     }
     const category = cookies().get('category')?.value as string
-    const body : Game = {
+    const body  = {
         gameDay: getValue("date"),
         gameTime: getValue("time"),
         gameTeamrival: getValue("rival"),
@@ -213,7 +213,7 @@ export async function updateMatchAction (formData: FormData) {
         return formData.get(value)?.toString() || ""
     }
     const category = cookies().get('category')?.value as string
-    const body : Game = {
+    const body  = {
         gameId: getValue("id"),
         gameDay: getValue("date"),
         gameTime: getValue("time"),
