@@ -18,7 +18,7 @@ const Game = ({ data }: { data: GameType }) => {
             {({ open }) => (
                 <>
                     <Disclosure.Button className={cn("w-full py-1 border-2 border-transparent", open && "border-primary-500")}>
-                        <span className="grid grid-cols-[_1fr_auto_1fr] place-items-center w-full font-medium">{data.category.categoryName} <span className="text-primary-500 font-normal">vs</span> {data.gameTeamrival}</span>
+                        <span className="grid grid-cols-[_1fr_auto_1fr] place-items-center w-full font-medium">{data.category?.categoryName} <span className="text-primary-500 font-normal">vs</span> {data.gameTeamrival}</span>
                     </Disclosure.Button>
                     <Disclosure.Panel className="py-2 text-sm grid grid-cols-2 place-items-center bg-black/20 md:text-base">
                         {
