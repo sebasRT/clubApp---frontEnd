@@ -67,7 +67,7 @@ export async function validateCoach (formData: FormData) {
 
 export async function authCoach (data: {category: string, coach: Coach}) {
 
-    cookies().set("coachAuth", "true", {maxAge: 500});
+    cookies().set("coachAuth", "true");
     cookies().set("category", data.category);
     cookies().set("dni", data.coach.userDni)
     revalidatePath("/coach")

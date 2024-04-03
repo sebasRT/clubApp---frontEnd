@@ -33,7 +33,7 @@ const SelectFixture = forwardRef(({ error, className, ...props }: SelectProps, r
                     className='peer appearance-none bg-transparent py-0 border-0 focus:bg-primary-400 focus:text-baltic-sea-900 focus:ring-0 w-full'
                     {...props}>
                     <option value="" disabled >Fixture</option>
-                    <option value="non">Ninguno</option>
+                    <option value="non" disabled>Ninguno</option>
                     {fixtures.map((item, index) => (
                         <option key={index} value={item[0]} className='odd:bg-white/20 text-wrap' onClick={(e)=> console.log("evento" + e.currentTarget.value)}>
                             {item[1]}

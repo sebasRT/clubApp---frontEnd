@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form';
 import { Game } from '@/models/admin.model';
 import { CgSpinner } from 'react-icons/cg';
-import { updateMatchAction } from '@/lib/admin.actions';
+import { updateNextMatchAction } from '@/lib/admin.actions';
 import dayjs from 'dayjs';
 
 type CreateMatchInputs = {
@@ -41,7 +41,7 @@ const EditNextMatch = ({ game }: { game?: Game }) => {
 
    const edit = async (data: FormData) => {
        await trigger()
-       const updated = await updateMatchAction(data)
+       const updated = await updateNextMatchAction(data)
        if (!updated) { setFormState("failed"); return };
        setFormState("done")
        reset()
