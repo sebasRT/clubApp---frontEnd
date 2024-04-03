@@ -34,7 +34,7 @@ export async function createPlayerAction(formData: FormData) {
         userAddress: getValue("address"),
         playerBirthdate: getValue("birthday"),
         userPassword: "",
-        category: category
+        categoryName: category
     }
 
     try {
