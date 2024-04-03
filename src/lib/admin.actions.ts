@@ -26,17 +26,15 @@ export async function createPlayerAction(formData: FormData) {
 
     const category = dayjs(getValue("birthday")).year().toString()
     
-    const body:Player = {
+    const body = {
         userName: getValue("name"),
         userLastname: getValue("lastName"),
         userDni: getValue("dni"),
         userEmail:getValue("email") ,
         userAddress: getValue("address"),
-        playerBirthdate: getValue("birthday"),
         userPassword: "",
-        category: {
-            categoryName: category
-        } 
+        playerBirthdate: getValue("birthday"),
+        categoryName: category
     }
 
     try {
@@ -49,7 +47,7 @@ export async function createPlayerAction(formData: FormData) {
           body: JSON.stringify(body)
 
         })
-        revalidatePath("/admin/players")
+        revalidatePath("/admin/players", "layout")
         revalidatePath("/admin/teams")
         return data.ok
     } catch (error: any) {
