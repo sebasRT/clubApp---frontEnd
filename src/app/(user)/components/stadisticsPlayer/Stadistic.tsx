@@ -26,9 +26,9 @@ export default async function Stadistics() {
               <td className="border border-black">10</td>
               <td className="border border-black">{`${data.userName} ${data.userLastname}`}</td>
               <td className="border border-black">Delantero</td>
-              <td className="border border-black">5</td>
-              <td className="border border-black">2</td>
-              <td className="border border-black">1</td>
+              <td className="border border-black">0</td>
+              <td className="border border-black">0</td>
+              <td className="border border-black">0</td>
             </tr>
           </tbody>
         </table>
