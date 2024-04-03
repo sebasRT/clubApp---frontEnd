@@ -9,15 +9,13 @@ import { getPlayerInfo, updatePlayerInfo } from '@/lib/user.actions';
 export default function Payment() {
   const [isPay, setIsPay] = useState(false)
 
-  // const updatePlayer = async () => {
-  //   const data = await getPlayerInfo()
-  //   const edit = await updatePlayerInfo(data);
-  
-  //   console.log("haoahoahoaoahoaoaahoahoahoah");
+  const updatePlayer = async () => {
+    const data = await getPlayerInfo()
+    const edit = await updatePlayerInfo(data);
     
-  //   if (!edit) {        
-  //     console.log(edit);return };
-  // };
+    if (!edit) {        
+      console.log(edit);return };
+  };
   
   return (
     <form action={ pay}>

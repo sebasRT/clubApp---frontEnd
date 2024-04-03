@@ -11,6 +11,8 @@ export default async function page() {
   const data = await getPlayerInfo()
   const match = await getMatchByCategory();
 
+  console.log(data);
+  
   const cards = [
     <NextMatchUserContainer key="1" />,
     <NextPracticeContainer key="2" />,
@@ -24,7 +26,7 @@ export default async function page() {
         <Image src={footballUserBanner} className="object-cover w-full" alt={"Football banner"} />
       </figure>
       <div className="mt-24 md:my-3">
-        <ModalNextMatch data={data} match={match} />
+        {/* <ModalNextMatch data={data} match={match} /> */}
         <h1 className="text-center text-5xl font-bauhs text-baltic-sea-900">Bienvenid@ <span>{`${data.userName} ${data.userLastname}`}</span></h1>
       </div>
       <div className="flex justify-between shadow-2xl md:px-5">

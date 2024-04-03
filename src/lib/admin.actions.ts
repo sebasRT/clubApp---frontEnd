@@ -32,8 +32,8 @@ export async function createPlayerAction(formData: FormData) {
         userDni: getValue("dni"),
         userEmail:getValue("email") ,
         userAddress: getValue("address"),
-        playerBirthdate: getValue("birthday"),
         userPassword: "",
+        playerBirthdate: getValue("birthday"),
         categoryName: category
     }
 
@@ -47,7 +47,7 @@ export async function createPlayerAction(formData: FormData) {
           body: JSON.stringify(body)
 
         })
-        revalidatePath("/admin/players")
+        revalidatePath("/admin/players", "layout")
         revalidatePath("/admin/teams")
         return data.ok
     } catch (error: any) {
