@@ -26,7 +26,7 @@ export async function createPlayerAction(formData: FormData) {
 
     const category = dayjs(getValue("birthday")).year().toString()
     
-    const body:Player = {
+    const body = {
         userName: getValue("name"),
         userLastname: getValue("lastName"),
         userDni: getValue("dni"),
@@ -34,9 +34,7 @@ export async function createPlayerAction(formData: FormData) {
         userAddress: getValue("address"),
         playerBirthdate: getValue("birthday"),
         userPassword: "",
-        category: {
-            categoryName: category
-        } 
+        category: category
     }
 
     try {
