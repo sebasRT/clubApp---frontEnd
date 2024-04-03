@@ -65,7 +65,7 @@ const CategoryTable = ({ categoryName, players, coach }: {
       <div className='flex justify-around items-center pb-1'>
         <b className='text-xs'>Entrenador: </b>
         <p className='text-sm text-left'>{coachName}</p>
-        <BiEdit className='text-xl fill-primary-400' />
+        {/* <BiEdit className='text-xl fill-primary-400' /> */}
       </div>
     </div>
 
