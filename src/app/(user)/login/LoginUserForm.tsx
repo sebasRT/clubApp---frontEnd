@@ -42,11 +42,11 @@ const LoginUserForm = () => {
         <form action={validate} className="z-10 flex flex-col gap-3 text-center relative text-baltic-sea-50">
           {formState === "notFound" && <Warning/>}
           <div className="bg-primary-400 p-2 rounded-md flex flex-col">
-            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center focus-visible:outline-non" placeholder="Ingresa email *" />
+            <input {...register("email")} id="email" className="bg-transparent placeholder:text-silver-900 placeholder:text-center border-transparent ring-0 focus:ring-0" placeholder="Ingresa email *" />
             {errors.email?.message && <span className="text-xs font-semibold text-red-800">{errors.email.message}</span> } 
           </div>
           <div className="bg-primary-400 p-2 rounded-md flex flex-col relative">
-              <input {...register("password")} id="password" className="bg-transparent placeholder:text-silver-900 placeholder:text-center  focus-visible:outline-none" type={showPass ? '' : 'password'} placeholder="Ingresa contraseña *" />
+              <input {...register("password")} id="password" className="bg-transparent placeholder:text-silver-900 placeholder:text-center  border-transparent focus:border-transparent" type={showPass ? '' : 'password'} placeholder="Ingresa contraseña *" />
               {
                 showPass ? (
                   <MdVisibility className="cursor-pointer absolute top-[10px] right-2 text-[#000] z-10 text-[1.5rem]" onClick={() => setShowpass(!showPass)}/>

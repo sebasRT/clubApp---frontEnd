@@ -41,15 +41,15 @@ const PasswordInputs = () => {
     return (
 
         <>
-            <div className='flex flex-col'>
+            <div className='flex flex-col '>
                 <input type="password" placeholder='ingresa contraseña*' {...register("password",{onChange: ()=> trigger("password")})} 
-                className='pl-3 mx-4 bg-transparent outline-none border-2 rounded-sm p-1' />
+                className='pl-3 mx-4 bg-transparent outline-none border-2 rounded-sm p-1 ring-0 focus:ring-0' />
                 {errors.password && <span className='text-[12px] text-baltic-sea-800 font-medium'>
                     {errors.password.message}</span>}
             </div>
             <div className='flex flex-col'>
                 <input type="password" placeholder='repite contraseña*'  {...register("confirmation")}
-                className='pl-3 mx-4 bg-transparent outline-none border-2 rounded-sm p-1' />
+                className='pl-3 mx-4 bg-transparent outline-none border-2 rounded-sm p-1 ring-0 focus:ring-0' />
                 {errors.confirmation && <span className='text-[12px] text-baltic-sea-800 font-medium'>
                     {errors.confirmation.message}</span>}
 
