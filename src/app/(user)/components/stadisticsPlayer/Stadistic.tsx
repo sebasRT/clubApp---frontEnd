@@ -1,4 +1,7 @@
-const Statistics = () => {
+import { getPlayerInfo } from "@/lib/user.actions";
+
+export default async function Stadistics() {
+  const data = await getPlayerInfo()
   return (
     <div className="bg-baltic-sea-900 px-2 py-5 rounded-5">
       <section>
@@ -21,7 +24,7 @@ const Statistics = () => {
           <tbody>
             <tr>
               <td className="border border-black">10</td>
-              <td className="border border-black">Pablo Alvarez</td>
+              <td className="border border-black">{`${data.userName} ${data.userLastname}`}</td>
               <td className="border border-black">Delantero</td>
               <td className="border border-black">5</td>
               <td className="border border-black">2</td>
@@ -34,4 +37,3 @@ const Statistics = () => {
   );
 };
 
-export default Statistics;

@@ -7,6 +7,7 @@ import NextMatchUserContainer from "../components/nextUserMatches/NextMatchUserC
 import NextPracticeContainer from "../components/nextPractice/NextPracticeContainer";
 import ModalNextMatch from "../components/ModalNextMatch";
 
+
 export default async function page() {
   const data = await getPlayerInfo()
   const match = await getMatchByCategory();
