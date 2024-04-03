@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers"
 import { apiBaseURL } from "./utils"
+import { revalidatePath } from "next/cache"
 
 
 export async function logoutUser() {
@@ -34,22 +35,23 @@ export async function getPlayerInfo() {
 export async function updatePlayerInfo(data: any) {
     
     const body:any = {
-        paymentId: 1,
-        amount: 10000,
-        player: {
-            userName: data?.userName,
-            userLastname: data?.userLastname,
-            userDni: data?.userDni,
-            userEmail: data?.userEmail,
-            userAddress: data?.userAddress,
-            userPassword: data?.userPassword,
-            playerBirthdate: data?.playerBirthdate,
-            categoryName: data?.category.categoryName
-        }
+    playerId: data.playerId,
+    playerPosition: data.playerPosition,
+    playerBirthdate:  data.playerPosition,
+    playerFeePaid: true,
+    playerPasswordChanged: true,
+    categoryId:  data.category.categoryId,
+    userName: data.userName,
+    userLastname:  data.userLastname,
+    userDni:  data.userDni,
+    userEmail:  data.userEmail,
+    userAddress:  data.userAddress,
+    userPassword:  data.userPassword,
+    clubId: data.team.teamId
 }
 
     try {
-        const data = await fetch(`${apiBaseURL}/payments/update` , {  
+        const data = await fetch(`${apiBaseURL}/players/update` , {  
             method: "PUT",
             headers: {
             "Content-Type": "application/json",
@@ -58,6 +60,7 @@ export async function updatePlayerInfo(data: any) {
         body: JSON.stringify(body)
 
         })
+        revalidatePath("/user")
         return data.ok
     } catch (error: any) {
         throw new Error(error.message)
