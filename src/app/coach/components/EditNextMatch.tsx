@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form';
 import { Game } from '@/models/admin.model';
 import { CgSpinner } from 'react-icons/cg';
-import { updateNextMatchAction } from '@/lib/admin.actions';
+import { updateNextMatchAction } from '@/lib/coach.actions';
 import dayjs from 'dayjs';
 
 type CreateMatchInputs = {
@@ -63,7 +63,7 @@ const EditNextMatch = ({ game }: { game?: Game }) => {
                         case "failed":
                             return <span className='text-center text-xs'>No se pudo actualizar el partido</span>
                         case "done":
-                            return <span className='text-center text-xs'>Partido creado.</span>
+                            return <span className='text-center text-xs'>Partido Editado.</span>
                         case "loading":
                             return <CgSpinner className="animate-spin text-5xl mx-auto" />
                         default:

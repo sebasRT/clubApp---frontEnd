@@ -1,5 +1,5 @@
 'use client'
-import { updatePrevMatchAction } from '@/lib/admin.actions'
+import { updatePrevMatchAction } from '@/lib/coach.actions'
 import { cn } from '@/lib/utils'
 import { Game } from '@/models/admin.model'
 import React, { useState } from 'react'

@@ -5,7 +5,7 @@ import SelectFixture from './Inputs/SelectFixture'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { createMatchAction } from '@/lib/admin.actions'
+import { createMatchAction } from '@/lib/coach.actions'
 import { CgSpinner } from 'react-icons/cg'
 import dayjs from 'dayjs'
 
